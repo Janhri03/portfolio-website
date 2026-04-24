@@ -32,13 +32,27 @@ body {
   color: var(--text);
   overflow-x: hidden;
   cursor: none;
+
   background:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
-    radial-gradient(circle at 18% 12%, rgba(255,255,255,0.08), transparent 22%),
-    radial-gradient(circle at 88% 18%, rgba(255,255,255,0.05), transparent 26%),
-    linear-gradient(180deg, #111111 0%, #030303 100%);
-  background-size: 42px 42px, 42px 42px, auto, auto, auto;
+    /* noise texture */
+    url("https://grainy-gradients.vercel.app/noise.svg"),
+
+    /* grid */
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+
+    /* vignette */
+    radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 60%),
+
+    /* base */
+    linear-gradient(180deg, #0a0a0a 0%, #000 100%);
+
+  background-size:
+    200px,
+    40px 40px,
+    40px 40px,
+    auto,
+    auto;
 }
 
 body::before {
@@ -46,13 +60,12 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -1;
-  opacity: 0.13;
-  background-image: repeating-radial-gradient(
-    circle at 20% 20%,
-    rgba(255,255,255,0.28) 0 1px,
-    transparent 1px 4px
-  );
+  z-index: 0;
+
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.08;
+
+  animation: grainMove 8s steps(10) infinite;
 }
 
 body::after {
@@ -60,20 +73,21 @@ body::after {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 3000;
-  opacity: 0.16;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(255,255,255,0.035) 0px,
-    rgba(255,255,255,0.035) 1px,
-    transparent 1px,
-    transparent 4px
-  );
+  z-index: 0;
+
+  background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.7));
 }
 
 a,
 button {
   cursor: none;
+}
+
+main,
+.site-header,
+.site-footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* LAYOUT */
@@ -313,8 +327,90 @@ button {
 /* ABOUT */
 .about-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 0.9fr 1.1fr 0.8fr;
   gap: 1.5rem;
+}
+
+.about-visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  min-height: 100%;
+  position: relative;
+  isolation: isolate;
+
+ background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.08) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  mix-blend-mode: screen;
+
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.about-visual:hover {
+  transform: translateY(-8px) rotate(-1deg);
+}
+
+/* small top label */
+.about-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: auto;
+}
+
+.about-visual h2 {
+  position: relative;
+  z-index: 2;
+}
+
+.about-visual:hover::after {
+  opacity: 1;
+  animation: glitchLines 0.28s steps(2, end) infinite;
+}
+
+.about-visual:hover h2 {
+  animation: textGlitch 0.35s steps(2, end) infinite;
+}
+
+.about-visual h2::before,
+.about-visual h2::after {
+  content: "CREATIVE\A DEVELOPER";
+  white-space: pre;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.about-visual h2::before {
+  transform: translate(2px, -2px);
+  color: rgba(255,255,255,0.45);
+}
+
+.about-visual h2::after {
+  transform: translate(-2px, 2px);
+  color: rgba(255,255,255,0.25);
+}
+
+.about-visual:hover h2::before,
+.about-visual:hover h2::after {
+  opacity: 1;
+}
+
+/* bottom text */
+.about-visual span {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .about-image {
@@ -742,6 +838,16 @@ button {
     grid-template-columns: 1fr;
   }
 
+@media (max-width: 1100px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-visual {
+    min-height: 220px;
+  }
+}
+
   .poster-card {
     max-width: 280px;
   }
@@ -753,5 +859,68 @@ button {
 
   .footer-links {
     justify-content: center;
+  }
+}
+
+@keyframes grainMove {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-5%, 5%); }
+  40% { transform: translate(5%, -5%); }
+  60% { transform: translate(-3%, 3%); }
+  80% { transform: translate(3%, -3%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes glitchLines {
+  0% {
+    transform: translateX(0);
+    clip-path: inset(0 0 85% 0);
+  }
+
+  25% {
+    transform: translateX(-8px);
+    clip-path: inset(30% 0 40% 0);
+  }
+
+  50% {
+    transform: translateX(8px);
+    clip-path: inset(55% 0 20% 0);
+  }
+
+  75% {
+    transform: translateX(-4px);
+    clip-path: inset(10% 0 65% 0);
+  }
+
+  100% {
+    transform: translateX(0);
+    clip-path: inset(75% 0 5% 0);
+  }
+}
+
+@keyframes textGlitch {
+  0% {
+    transform: translate(0);
+    letter-spacing: 0.02em;
+  }
+
+  25% {
+    transform: translate(-2px, 1px);
+    letter-spacing: 0.05em;
+  }
+
+  50% {
+    transform: translate(2px, -1px);
+    letter-spacing: 0.01em;
+  }
+
+  75% {
+    transform: translate(-1px, -2px);
+    letter-spacing: 0.04em;
+  }
+
+  100% {
+    transform: translate(0);
+    letter-spacing: 0.02em;
   }
 }
