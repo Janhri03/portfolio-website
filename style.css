@@ -1,24 +1,27 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* VARIABLES */
 :root {
   --bg: #050505;
-  --panel: rgba(15, 15, 15, 0.94);
-  --panel-light: rgba(255, 255, 255, 0.04);
-  --border: rgba(255, 255, 255, 0.22);
+  --panel: rgba(14, 14, 14, 0.94);
+  --panel-soft: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.18);
+  --border-strong: rgba(255, 255, 255, 0.42);
   --text: #f4f4f4;
-  --muted: #9b9b9b;
+  --muted: #9a9a9a;
   --white: #ffffff;
   --black: #000000;
-  --grey: #1a1a1a;
-  --shadow: 0 25px 80px rgba(0, 0, 0, 0.75);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.78);
   --container: 1180px;
   --header-height: 84px;
 }
 
+/* BASE */
 html {
   scroll-behavior: smooth;
 }
@@ -32,10 +35,10 @@ body {
   background:
     linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
-    radial-gradient(circle at 15% 10%, rgba(255,255,255,0.08), transparent 20%),
-    radial-gradient(circle at 90% 20%, rgba(255,255,255,0.05), transparent 24%),
-    linear-gradient(180deg, #111 0%, #030303 100%);
-  background-size: 38px 38px, 38px 38px, auto, auto, auto;
+    radial-gradient(circle at 18% 12%, rgba(255,255,255,0.08), transparent 22%),
+    radial-gradient(circle at 88% 18%, rgba(255,255,255,0.05), transparent 26%),
+    linear-gradient(180deg, #111111 0%, #030303 100%);
+  background-size: 42px 42px, 42px 42px, auto, auto, auto;
 }
 
 body::before {
@@ -44,10 +47,12 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.16;
-  background-image:
-    repeating-radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25) 0 1px, transparent 1px 4px);
-  mix-blend-mode: screen;
+  opacity: 0.13;
+  background-image: repeating-radial-gradient(
+    circle at 20% 20%,
+    rgba(255,255,255,0.28) 0 1px,
+    transparent 1px 4px
+  );
 }
 
 body::after {
@@ -56,15 +61,14 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: 3000;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255,255,255,0.035) 0px,
-      rgba(255,255,255,0.035) 1px,
-      transparent 1px,
-      transparent 4px
-    );
-  opacity: 0.22;
+  opacity: 0.16;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.035) 0px,
+    rgba(255,255,255,0.035) 1px,
+    transparent 1px,
+    transparent 4px
+  );
 }
 
 a,
@@ -72,6 +76,7 @@ button {
   cursor: none;
 }
 
+/* LAYOUT */
 .container {
   width: min(var(--container), calc(100% - 2rem));
   margin-inline: auto;
@@ -82,16 +87,41 @@ button {
   scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
+.card,
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(23, 23, 23, 0.96), rgba(5, 5, 5, 0.98));
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: var(--shadow);
+}
+
+.card::before,
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background:
+    linear-gradient(90deg, transparent 49%, white 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, white 50%, transparent 51%);
+  background-size: 76px 76px;
+}
+
+/* TYPOGRAPHY */
 .section-heading {
   text-align: center;
   max-width: 780px;
-  margin: 0 auto 2.25rem;
+  margin: 0 auto 2.5rem;
 }
 
 .section-kicker,
 .eyebrow {
-  color: var(--muted);
+  display: block;
   font-family: "Bebas Neue", sans-serif;
+  color: var(--muted);
   font-size: 1.05rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -101,20 +131,21 @@ button {
 .section-heading h2,
 .hero h1 {
   font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(3.6rem, 9vw, 8rem);
-  line-height: 0.82;
-  margin-bottom: 1.2rem;
+  font-size: clamp(3.8rem, 8vw, 8rem);
+  line-height: 0.85;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 .section-heading p,
 .hero-text {
   color: var(--muted);
   font-size: 1rem;
-  line-height: 1.8;
+  line-height: 1.75;
 }
 
+/* HEADER */
 .site-header {
   position: fixed;
   inset: 0 0 auto;
@@ -129,17 +160,16 @@ button {
   justify-content: space-between;
   padding: 0 1.1rem;
   border: 1px solid var(--border);
-  background: rgba(5, 5, 5, 0.82);
+  background: rgba(5, 5, 5, 0.84);
   backdrop-filter: blur(18px);
-  border-radius: 0;
   box-shadow: var(--shadow);
 }
 
 .logo {
-  color: white;
+  color: var(--white);
   text-decoration: none;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -154,9 +184,8 @@ button {
 .nav-link {
   color: var(--muted);
   text-decoration: none;
-  font-size: 0.84rem;
-  padding: 0.7rem 0.95rem;
-  border-radius: 0;
+  font-size: 0.82rem;
+  padding: 0.75rem 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   transition: 0.25s ease;
@@ -164,8 +193,8 @@ button {
 
 .nav-link:hover,
 .nav-link.active {
-  color: black;
-  background: white;
+  color: var(--black);
+  background: var(--white);
 }
 
 .nav-toggle {
@@ -173,20 +202,20 @@ button {
   width: 48px;
   height: 48px;
   border: 1px solid var(--border);
-  border-radius: 0;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.05);
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
 }
 
 .nav-toggle span {
-  display: block;
-  width: 20px;
+  width: 22px;
   height: 2px;
   background: white;
 }
 
+/* HERO */
 .hero {
   min-height: 100vh;
   display: grid;
@@ -194,43 +223,26 @@ button {
   padding-top: calc(var(--header-height) + 2rem);
 }
 
-.hero-panel,
-.card {
-  position: relative;
-  background:
-    linear-gradient(180deg, rgba(25, 25, 25, 0.96), rgba(6, 6, 6, 0.98));
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  border-radius: 0;
-  overflow: hidden;
-}
-
-.hero-panel::before,
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.08;
-  background:
-    linear-gradient(90deg, transparent 49%, white 50%, transparent 51%),
-    linear-gradient(0deg, transparent 49%, white 50%, transparent 51%);
-  background-size: 80px 80px;
-}
-
 .hero-panel {
   padding: clamp(2rem, 5vw, 4rem);
 }
 
-.hero span {
-  color: white;
-  text-shadow:
-    3px 3px 0 #000,
-    -1px -1px 0 rgba(255,255,255,0.25);
+.hero-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-copy h1 {
+  max-width: 740px;
 }
 
 .hero-text {
-  max-width: 720px;
+  max-width: 650px;
+  margin-top: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -238,65 +250,91 @@ button {
 .hero-actions {
   display: flex;
   gap: 1rem;
-  margin: 2rem 0 2.25rem;
+  margin-top: 2rem;
   flex-wrap: wrap;
 }
 
-.hero-stats {
+.hero-visual {
+  min-height: 430px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  place-items: center;
 }
 
-.stat-card {
-  padding: 1rem 1.05rem;
-  border-radius: 0;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+.poster-card {
+  width: 100%;
+  max-width: 390px;
+  aspect-ratio: 0.75;
+  border: 2px solid white;
+  background:
+    linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px),
+    radial-gradient(circle at 50% 38%, rgba(255,255,255,0.16), transparent 28%),
+    linear-gradient(160deg, #202020, #000000);
+  background-size: 30px 30px, 30px 30px, auto, auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transform: rotate(-2deg);
+  box-shadow: 18px 18px 0 rgba(255,255,255,0.08);
+  transition: 0.3s ease;
 }
 
-.stat-card strong {
-  display: block;
-  margin-bottom: 0.3rem;
+.poster-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.6);
+  opacity: 0.5;
+}
+
+.poster-card:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow: 24px 24px 0 rgba(255,255,255,0.1);
+}
+
+.poster-card h2 {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 1.35rem;
-  letter-spacing: 0.04em;
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: 0.8;
   text-transform: uppercase;
 }
 
-.stat-card span {
+.poster-card p,
+.poster-small {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
   color: var(--muted);
-  font-size: 0.82rem;
-  text-transform: uppercase;
 }
 
+/* ABOUT */
 .about-grid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-columns: 0.9fr 1.1fr;
   gap: 1.5rem;
 }
 
 .about-image {
-  min-height: 25rem;
-  display: grid;
-  place-items: center;
+  min-height: 27rem;
+  overflow: hidden;
 }
 
-.image-placeholder {
-  width: min(72%, 16rem);
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border-radius: 0;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.2), transparent 20%),
-    linear-gradient(145deg, #2b2b2b, #050505);
-  border: 2px solid white;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(4rem, 8vw, 7rem);
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  filter: grayscale(1) contrast(1.3);
+.about-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.45) brightness(0.9);
+  transition: 0.45s ease;
+}
+
+.about-image:hover .about-img {
+  transform: scale(1.06);
+  filter: grayscale(1) contrast(1.8) brightness(0.85);
 }
 
 .about-content {
@@ -305,22 +343,28 @@ button {
 
 .about-content h3,
 .project-body h3,
-.skill-card h3,
+.skill-visual h3,
 .contact-socials h3 {
+  position: relative;
+  z-index: 2;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
 
 .about-content p {
+  position: relative;
+  z-index: 2;
   color: var(--muted);
   line-height: 1.8;
   margin-bottom: 1rem;
 }
 
 .about-meta {
+  position: relative;
+  z-index: 2;
   margin-top: 1.6rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -329,48 +373,45 @@ button {
 
 .about-meta div {
   padding: 1rem;
-  border-radius: 0;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.14);
 }
 
 .about-meta span {
   display: block;
   color: var(--muted);
   font-size: 0.78rem;
-  margin-bottom: 0.35rem;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
 }
 
+.about-meta strong {
+  font-size: 0.92rem;
+}
+
+/* PROJECTS */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.1rem;
 }
 
 .project-card {
-  overflow: hidden;
   transition: 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-8px) rotate(-1deg);
-  border-color: white;
+  border-color: var(--border-strong);
 }
 
 .project-thumb {
-  height: 11rem;
-  filter: grayscale(1) contrast(1.4);
-  border-bottom: 1px solid rgba(255,255,255,0.18);
-}
-
-.project-thumb-one,
-.project-thumb-two,
-.project-thumb-three,
-.project-thumb-four {
+  position: relative;
+  z-index: 2;
+  height: 15rem;
+  overflow: hidden;
   background:
-    radial-gradient(circle at 34% 28%, rgba(255,255,255,0.32), transparent 16%),
-    radial-gradient(circle at 65% 65%, rgba(255,255,255,0.12), transparent 22%),
     repeating-linear-gradient(
       45deg,
       rgba(255,255,255,0.05) 0px,
@@ -379,10 +420,26 @@ button {
       transparent 7px
     ),
     linear-gradient(160deg, #2a2a2a, #090909 50%, #000000);
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.35);
+  transition: 0.45s ease;
+}
+
+.project-card:hover .project-thumb img {
+  transform: scale(1.08);
+  filter: grayscale(1) contrast(1.75) brightness(0.85);
 }
 
 .project-body {
-  padding: 1.15rem;
+  position: relative;
+  z-index: 2;
+  padding: 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
@@ -391,60 +448,67 @@ button {
 .project-body p {
   color: var(--muted);
   line-height: 1.65;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
 }
 
-.tag-list,
-.pill-list {
+.tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
 }
 
 .tag-list span,
-.pill-list span {
-  padding: 0.42rem 0.7rem;
-  border-radius: 0;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: white;
-  font-size: 0.75rem;
+.social-links a {
   text-transform: uppercase;
+}
+
+.tag-list span {
+  padding: 0.42rem 0.7rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: white;
+  font-size: 0.72rem;
   letter-spacing: 0.06em;
 }
 
-.project-actions {
-  display: flex;
-  gap: 0.9rem;
-  margin-top: auto;
-}
-
-.text-link {
-  color: white;
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-bottom: 1px solid white;
-}
-
-.skills-grid {
+/* SKILLS */
+.skills-visual-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
-.skill-card {
-  padding: 1.3rem 1.15rem;
+.skill-visual {
+  min-height: 280px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s ease;
 }
 
-.skill-card p {
+.skill-visual:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-strong);
+}
+
+.skill-visual span {
+  position: relative;
+  z-index: 2;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4.4rem;
+  line-height: 1;
+  color: rgba(255,255,255,0.14);
+}
+
+.skill-visual p {
+  position: relative;
+  z-index: 2;
   color: var(--muted);
   line-height: 1.7;
-  margin-bottom: 1rem;
-  font-size: 0.92rem;
 }
 
+/* CONTACT */
 .contact-socials {
   max-width: 760px;
   margin: 0 auto;
@@ -453,6 +517,8 @@ button {
 }
 
 .contact-socials p {
+  position: relative;
+  z-index: 2;
   color: var(--muted);
   line-height: 1.7;
   margin: 1rem auto 1.5rem;
@@ -460,19 +526,21 @@ button {
 }
 
 .social-links {
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
+/* BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3.2rem;
+  min-height: 3.15rem;
   padding: 0 1.2rem;
-  border-radius: 0;
   border: 1px solid transparent;
   text-decoration: none;
   font-weight: 800;
@@ -492,8 +560,8 @@ button {
 
 .btn-secondary {
   color: white;
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.04);
 }
 
 .btn-secondary:hover {
@@ -501,10 +569,11 @@ button {
   color: black;
 }
 
+/* FOOTER */
 .site-footer {
   padding: 2rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(0, 0, 0, 0.78);
+  border-top: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.76);
 }
 
 .footer-content {
@@ -517,7 +586,7 @@ button {
 .footer-content p {
   font-family: "Bebas Neue", sans-serif;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -534,12 +603,14 @@ button {
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  transition: 0.25s ease;
 }
 
 .footer-links a:hover {
   color: white;
 }
 
+/* REVEAL ANIMATIONS */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -563,13 +634,14 @@ button {
   transition-delay: 0.3s;
 }
 
+/* CURSOR */
 .cursor-dot,
 .cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 2000;
+  z-index: 4000;
   transform: translate(-50%, -50%);
 }
 
@@ -583,7 +655,7 @@ button {
 .cursor-ring {
   width: 34px;
   height: 34px;
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255,255,255,0.65);
   border-radius: 50%;
   transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
 }
@@ -591,17 +663,27 @@ button {
 .cursor-ring.hover {
   width: 54px;
   height: 54px;
-  border-color: rgba(255, 255, 255, 1);
+  border-color: rgba(255,255,255,1);
 }
 
+/* RESPONSIVE */
 @media (max-width: 1100px) {
+  .hero-layout,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
   .projects-grid,
-  .skills-grid {
+  .skills-visual-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .about-grid {
-    grid-template-columns: 1fr;
+  .hero-visual {
+    min-height: auto;
+  }
+
+  .poster-card {
+    max-width: 330px;
   }
 }
 
@@ -617,6 +699,10 @@ button {
     display: none;
   }
 
+  .site-header {
+    padding-top: 0.8rem;
+  }
+
   .nav-toggle {
     display: flex;
   }
@@ -624,10 +710,11 @@ button {
   .nav-links {
     position: absolute;
     top: calc(100% + 10px);
-    left: 0;
-    right: 0;
+    left: 1rem;
+    right: 1rem;
     flex-direction: column;
-    background: rgba(5, 5, 5, 0.96);
+    align-items: stretch;
+    background: rgba(5,5,5,0.96);
     border: 1px solid var(--border);
     padding: 1rem;
     display: none;
@@ -637,14 +724,26 @@ button {
     display: flex;
   }
 
-  .hero-stats,
-  .projects-grid,
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .nav-link {
+    text-align: center;
   }
 
   .section {
     padding: 4.5rem 0;
+  }
+
+  .hero {
+    padding-top: calc(var(--header-height) + 4rem);
+  }
+
+  .projects-grid,
+  .skills-visual-grid,
+  .about-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .poster-card {
+    max-width: 280px;
   }
 
   .footer-content {
