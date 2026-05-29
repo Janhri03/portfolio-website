@@ -77,3 +77,19 @@ if (cursorDot && cursorRing && window.innerWidth > 768) {
     el.addEventListener("mouseleave", () => cursorRing.classList.remove("hover"));
   });
 }
+const copyEmailBtn = document.getElementById("copyEmail");
+const toast = document.getElementById("toast");
+
+if (copyEmailBtn && toast) {
+  copyEmailBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    navigator.clipboard.writeText("janhri03@gmail.com");
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2200);
+  });
+}
