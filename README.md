@@ -1,93 +1,163 @@
-# portfolio-final
+# Zhan Hristov – Personal Portfolio Website
 
+A personal portfolio website designed and developed to showcase my projects, skills, and identity as a UX/UI designer and front-end developer.
 
+The portfolio focuses on creating a strong personal brand by combining clean web development principles with a dark, bold visual identity inspired by modern music culture, editorial layouts, and artists such as Travis Scott, Future, and Playboi Carti.
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Project Overview
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+The goal of this project was to create a professional portfolio that presents my work in a clear and memorable way for internship opportunities and future collaborations.
 
-## Add your files
+Instead of creating a standard developer portfolio, I focused on making the website represent my personality through:
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- Dark visual identity
+- High contrast black & white design
+- Bold typography
+- Strong visual hierarchy
+- Minimal but impactful content
+- Interactive elements and animations
 
-```
-cd existing_repo
-git remote add origin https://git.fhict.nl/I500184/portfolio-final.git
-git branch -M main
-git push -uf origin main
-```
+---
 
-## Integrate with your tools
+## Features
 
-- [ ] [Set up project integrations](https://git.fhict.nl/I500184/portfolio-final/-/settings/integrations)
+- Fully responsive design
+- Modern dark UI
+- Custom cursor interaction
+- Smooth scroll animations
+- Interactive project cards
+- Mobile hamburger navigation
+- Project previews linked directly to GitHub repositories
+- Social media/contact integration
+- Email copy notification popup
 
-## Collaborate with your team
+---
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+## Built With
 
-## Test and Deploy
+- HTML5
+- CSS3
+- JavaScript
 
-Use the built-in continuous integration in GitLab.
+Development tools:
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+- Visual Studio Code
+- Git & GitHub
+- Figma
 
-***
+---
 
-# Editing this README
+## Website Sections
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+### Home
 
-## Suggestions for a good README
+Introduction section presenting my role and visual identity.
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### About Me
 
-## Name
-Choose a self-explaining name for your project.
+Personal introduction explaining my approach as a designer with a developer mindset.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Includes:
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+- Personal branding
+- Design focus
+- Creative identity
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+### Projects
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+A showcase of my main projects:
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+- AI Case Generator
+- Dating App
+- Interactive Storytelling Experience
+- Car Audio Player
+- Interactive Ferrari F40
+- Feedback Planet
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Each project card includes:
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+- Visual preview
+- Short description
+- Technologies used
+- Repository link
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### Skills
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Overview of my experience with:
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+- Front-end Development
+- UX/UI Design
+- Development Workflow
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+### Contact
 
-## License
-For open source projects, say how it is licensed.
+Simple contact section with:
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- Email
+- LinkedIn
+- Instagram
+- GitHub
+
+---
+
+## Design Process
+
+The portfolio went through multiple design iterations based on research, testing, and feedback.
+
+The first versions focused mainly on structure and usability. After receiving feedback from teachers and users, I improved the website by:
+
+- Removing unnecessary content
+- Adding stronger visuals
+- Improving project presentation
+- Creating a stronger personal identity
+- Making the design less generic
+
+The final visual style was influenced by music visuals, album artwork, creative portfolios, and modern editorial design.
+
+---
+
+## Responsive Design
+
+The website is optimized for different screen sizes:
+
+- Desktop
+- Tablet
+- Mobile
+
+The mobile version includes a custom hamburger navigation and adjusted layouts for better usability.
+
+---
+
+## Future Improvements
+
+Possible future improvements:
+
+- Create professional personal photography matching the website identity
+- Add more detailed project case studies
+- Improve animations and transitions
+- Expand project pages with design processes
+- Continue developing the personal branding
+
+---
+
+## Author
+
+**Zhan Hristov**
+
+UX/UI Designer & Front-End Developer
+
+GitHub: Janhri03
+
+LinkedIn: zhan-hristov-4282b42b1
+
+Instagram: django_vrn
+
+---
+
+## Status
+
+Completed first full version.
+
+The portfolio will continue evolving together with my skills, projects, and personal brand.
