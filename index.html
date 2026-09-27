@@ -1,371 +1,1391 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zhan Hristov | Portfolio</title>
-  <meta name="description" content="Frontend developer and web designer portfolio of Zhan Hristov." />
+
+  <title>Zhan Hristov | Front-End Developer & Designer</title>
+
+  <meta
+    name="description"
+    content="Portfolio of Zhan Hristov — front-end developer and web designer creating bold digital experiences."
+  />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
+
 <body>
+
+  <!-- CUSTOM CURSOR -->
   <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
 
+  <div class="cursor-ring">
+    <span class="cursor-label"></span>
+  </div>
+
+
+  <!-- NAVIGATION -->
   <header class="site-header">
-    <nav class="navbar container">
-      <a href="#home" class="logo">Zhan Hristov</a>
 
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
+    <nav class="navbar">
+
+      <a href="#home" class="logo">
+        ZH<span>.</span>
+      </a>
+
+
+      <button
+        class="nav-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
       </button>
 
+
       <ul class="nav-links">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+
+        <li>
+          <a href="#home" class="nav-link active">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a href="#about" class="nav-link">
+            About
+          </a>
+        </li>
+
+        <li>
+          <a href="#projects" class="nav-link">
+            Work
+          </a>
+        </li>
+
+        <li>
+          <a href="#skills" class="nav-link">
+            Skills
+          </a>
+        </li>
+
+        <li>
+          <a href="#contact" class="nav-link">
+            Contact
+          </a>
+        </li>
+
       </ul>
+
     </nav>
+
   </header>
 
+
   <main>
-    <section id="home" class="section hero container">
-  <div class="hero-panel reveal">
-    <div class="hero-layout">
-      <div class="hero-copy">
-        <h1>Frontend Developer / Web Designer</h1>
-        <p class="hero-text">
-          I create clean, bold, and responsive digital experiences with a focus on layout, interaction, and visual storytelling.
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section id="home" class="hero">
+
+      <div class="hero-meta hero-meta-left">
+        PORTFOLIO<br>
+        MMXXVI
+      </div>
+
+
+      <div class="hero-meta hero-meta-right">
+        FRONT-END<br>
+        WEB DESIGN
+      </div>
+
+
+      <div class="hero-title-wrap">
+
+        <h1 class="hero-title">
+
+          <span>
+            ZHAN
+          </span>
+
+          <span>
+            HRISTOV
+          </span>
+
+        </h1>
+
+      </div>
+
+
+      <div
+        class="hero-portrait"
+        data-cursor="ZH"
+      >
+
+        <div class="hero-portrait-frame">
+
+          <img
+            src="images/myself.jpeg"
+            alt="Zhan Hristov"
+          >
+
+        </div>
+
+
+        <p class="portrait-caption">
+          DESIGN / CODE / DIGITAL CULTURE
         </p>
 
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary magnetic">View Work</a>
-          <a href="#contact" class="btn btn-secondary magnetic">Contact Me</a>
-        </div>
       </div>
 
-      <div class="hero-visual">
-        <div class="poster-card">
-          <img src="images/myself.jpeg" class="poster-img" />
-          <span class="poster-small"></span>
-          <h2>I AM DESIGN</h2>
-          <p>Portfolio / Web / UI</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-    <section id="about" class="section container">
-  <div class="section-heading reveal">
-    <p class="section-kicker">About Me</p>
-    <h2>Who I Am</h2>
-  </div>
+      <div class="hero-role">
 
-<div class="about-grid">
+        <span>
+          Front-End Developer
+        </span>
 
-  <div class="about-image card reveal">
-    <img src="images/myself.jpeg" alt="Zhan Hristov" class="about-img" />
-  </div>
+        <em>
+          &
+        </em>
 
-  <div class="about-content card reveal reveal-delay-1">
-    <h3>Designer With A Developer Mindset</h3>
-    <p>
-      I create modern digital experiences that combine clean structure, strong visuals, and front-end development.
-    </p>
-    <p>
-      My goal is to design websites that feel personal, sharp, and easy to use.
-    </p>
+        <span>
+          Web Designer
+        </span>
 
-    <div class="about-meta">
-      <div>
-        <span>Name</span>
-        <strong>Zhan Hristov</strong>
-      </div>
-      <div>
-        <span>Focus</span>
-        <strong>UX/UI & Frontend</strong>
-      </div>
-    </div>
-  </div>
-
-  <div class="about-visual card reveal reveal-delay-2">
-    <p class="about-tag">ZH / 2026</p>
-    <h2>CREATIVE<br>DEVELOPER</h2>
-    <span>UI / CODE / DESIGN</span>
-  </div>
-
-</div>
-</section>
-
-    <section id="projects" class="section container">
-  <div class="section-heading reveal">
-    <p class="section-kicker">Selected Work</p>
-    <h2>Projects</h2>
-    <p>Visual previews of my design and development work.</p>
-  </div>
-
-  <div class="projects-grid">
-    <a href="https://github.com/janhri03/ai-case-generator"
-    target="_blank"
-    class="project-card-link reveal">
-
-    <article class="project-card card">
-
-      <div class="project-thumb">
-        <img src="images/ai-case.png" alt="AI Case Generator App">
       </div>
 
-      <div class="project-body">
 
-        <div class="project-top">
-          <span class="project-number">01</span>
-        </div>
-
-        <h3>AI Case Generator</h3>
+      <div class="hero-bottom">
 
         <p>
-          AI-powered tool that transforms real social work case documents into playable board game scenarios for Tweekracht’s educational training game.
+          Creating digital experiences with clean code,
+          strong visuals and a little attitude.
         </p>
 
-        <div class="tag-list">
-          <span>Flutter</span>
-          <span>Json</span>
-          <span>API</span>
-          <span>Python</span>
-        </div>
+
+        <a
+          href="#projects"
+          class="hero-scroll"
+          data-cursor="SCROLL"
+        >
+
+          Selected work
+
+          <span>
+            ↓
+          </span>
+
+        </a>
 
       </div>
 
-    </article>
-  </a>
-
-    <a href="https://github.com/janhri03/dating-app"
-      target="_blank"
-      class="project-card-link reveal">
-
-      <article class="project-card card">
-
-        <div class="project-thumb">
-          <img src="images/dating.png" alt="AI Case Generator App">
-        </div>
-
-        <div class="project-body">
-
-          <div class="project-top">
-            <span class="project-number">02</span>
-          </div>
-
-          <h3>Dating App</h3>
-
-          <p>
-            Mobile UI/UX concept focused on user engagement, profile discovery, and intuitive interaction patterns within a modern dating experience.
-          </p>
-
-          <div class="tag-list">
-            <span>Swift</span>
-          </div>
-
-        </div>
-
-      </article>
-    </a>
-
-    <a href="https://github.com/janhri03/multimedium"
-      target="_blank"
-      class="project-card-link reveal">
-
-      <article class="project-card card">
-
-        <div class="project-thumb">
-          <img src="images/story.png" alt="AI Case Generator App">
-        </div>
-
-        <div class="project-body">
-
-          <div class="project-top">
-            <span class="project-number">03</span>
-          </div>
-
-          <h3>Interactive Storytelling</h3>
-
-          <p>
-            Interactive narrative experience that allows users to influence the story through choices, creating a more immersive and engaging journey.
-          </p>
-
-          <div class="tag-list">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-          </div>
-        </div>
-      </article>
-    </a>
-    <a href="https://github.com/janhri03/ai-case-generator"
-   target="_blank"
-   class="project-card-link reveal">
-
-  <article class="project-card card">
-
-    <div class="project-thumb">
-      <img src="images/car.png" alt="AI Case Generator App">
-    </div>
-
-    <div class="project-body">
-
-      <div class="project-top">
-        <span class="project-number">04</span>
-      </div>
-
-      <h3>Car Audio Player</h3>
-
-      <p>
-        Mobile audio player focused on safer driving through voice commands, simplified controls, and a distraction-free user experience.
-      </p>
-
-      <div class="tag-list">
-        <span>Swift</span>
-      </div>
-
-    </div>
-
-  </article>
-</a>
-<a href="https://github.com/janhri03/ai-case-generator"
-   target="_blank"
-   class="project-card-link reveal">
-
-  <article class="project-card card">
-
-    <div class="project-thumb">
-      <img src="images/ferrari.png" alt="AI Case Generator App">
-    </div>
-
-    <div class="project-body">
-
-      <div class="project-top">
-        <span class="project-number">05</span>
-      </div>
-
-      <h3>Interactive Ferrari F40</h3>
-
-      <p>
-        A 3D interactive showcase of the Ferrari F40 that transforms a static car presentation into an engaging exploratory experience through direct user interaction.
-      </p>
-
-      <div class="tag-list">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-      </div>
-
-    </div>
-
-  </article>
-</a>
-<a href="https://github.com/janhri03/ai-case-generator"
-   target="_blank"
-   class="project-card-link reveal">
-
-  <article class="project-card card">
-
-    <div class="project-thumb">
-      <img src="images/feedback.png" alt="AI Case Generator App">
-    </div>
-
-    <div class="project-body">
-
-      <div class="project-top">
-        <span class="project-number">06</span>
-      </div>
-
-      <h3>Feedback Planet</h3>
-
-      <p>
-        Interactive feedback platform that transforms user responses into evolving digital planets, making feedback more engaging, visual, and rewarding.
-      </p>
-
-      <div class="tag-list">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-      </div>
-
-    </div>
-
-  </article>
-</a>
-  </div>
-</section>
-
-    <section id="skills" class="section container">
-  <div class="section-heading reveal">
-    <p class="section-kicker">Skills</p>
-    <h2>Tools I Use</h2>
-  </div>
-
-  <div class="skills-visual-grid">
-    <article class="skill-visual card reveal">
-      <span>01</span>
-      <h3>Web Development</h3>
-      <p>HTML, CSS, JavaScript, Swift, Flutter responsive layouts, accessibility basics.</p>
-    </article>
-
-    <article class="skill-visual card reveal reveal-delay-1">
-      <span>02</span>
-      <h3>UX/UI Design</h3>
-      <p>Figma, wireframes, prototypes, visual design, user testing.</p>
-    </article>
-
-    <article class="skill-visual card reveal reveal-delay-2">
-      <span>03</span>
-      <h3>Workflow</h3>
-      <p>GitLab, VS Code, Chrome DevTools, project structure.</p>
-    </article>
-  </div>
-</section>
-
-    <section id="contact" class="section container">
-      <div class="section-heading reveal">
-        <p class="section-kicker">Contact Page</p>
-        <h2>Get In Touch</h2>
-        <p>You can contact me through my social platforms or email.</p>
-      </div>
-
-      <div class="contact-socials card reveal">
-        <h3>Contact Information</h3>
-        <p>
-          I am open to internship opportunities, collaborations, and new creative projects.
-          Feel free to reach out through one of the platforms below.
-        </p>
-
-        <div class="social-links">
-          <a href="mailto:janhri03@gmail.com" class="btn btn-secondary magnetic" id="copyEmail">Email</a>
-          <a href="https://www.linkedin.com/in/zhan-hristov-4282b42b1/" target="_blank" class="btn btn-secondary magnetic">LinkedIn</a>
-          <a href="https://www.instagram.com/django_vrn/" target="_blank" class="btn btn-secondary magnetic">Instagram</a>
-          <a href="https://github.com/Janhri03" target="_blank" class="btn btn-secondary magnetic">GitHub</a>
-        </div>
-      </div>
     </section>
+
+
+
+    <!-- =====================================================
+         MARQUEE
+    ====================================================== -->
+
+    <div class="marquee" aria-hidden="true">
+
+      <div class="marquee-track">
+
+        <span>DESIGN</span>
+        <span>✦</span>
+
+        <span>FRONT-END</span>
+        <span>✦</span>
+
+        <span>INTERACTION</span>
+        <span>✦</span>
+
+        <span>CREATIVE CODE</span>
+        <span>✦</span>
+
+        <span>DESIGN</span>
+        <span>✦</span>
+
+        <span>FRONT-END</span>
+        <span>✦</span>
+
+        <span>INTERACTION</span>
+        <span>✦</span>
+
+        <span>CREATIVE CODE</span>
+        <span>✦</span>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section id="about" class="about section">
+
+      <p class="section-marker reveal">
+        SIDE A / WHO I AM
+      </p>
+
+
+      <div class="about-layout">
+
+        <div class="about-photo-wrap reveal">
+
+          <div class="about-photo">
+
+            <img
+              src="images/myself.jpeg"
+              alt="Portrait of Zhan Hristov"
+            >
+
+          </div>
+
+
+          <span class="photo-note">
+            ZHAN HRISTOV<br>
+            EINDHOVEN / 2026
+          </span>
+
+        </div>
+
+
+        <div class="about-copy reveal">
+
+          <p class="about-eyebrow">
+            DESIGNER WITH A DEVELOPER MINDSET
+          </p>
+
+
+          <h2>
+
+            I DON'T WANT
+
+            <span>
+              another
+            </span>
+
+            TEMPLATE.
+
+          </h2>
+
+
+          <p class="about-lead">
+            I design and build digital experiences that combine
+            strong visual identity with practical front-end development.
+          </p>
+
+
+          <p class="about-small">
+            I like interfaces that feel intentional, sharp and personal.
+            My work moves between UX/UI, web development,
+            interaction and visual experimentation.
+          </p>
+
+
+          <div class="about-signature">
+
+            <span>UX / UI</span>
+            <span>FRONT-END</span>
+            <span>DIGITAL DESIGN</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="manifesto reveal">
+
+        <p>
+          CLEAN CODE.
+        </p>
+
+        <p class="manifesto-serif">
+          Loud identity.
+        </p>
+
+        <p>
+          NO BORING WEBSITES.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROJECTS
+    ====================================================== -->
+
+    <section id="projects" class="projects section">
+
+      <div class="projects-intro reveal">
+
+        <p class="section-marker">
+          SELECTED WORK / ARCHIVE
+        </p>
+
+
+        <h2>
+          PROJECTS
+        </h2>
+
+
+        <p>
+          Selected development and design work.
+          Different ideas, one evolving creative direction.
+        </p>
+
+      </div>
+
+
+
+      <div class="project-list">
+
+
+        <!-- =================================================
+             GORHIM
+        ================================================== -->
+
+        <a
+          href="https://github.com/Janhri03/restaurant-gorhim.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-item reveal"
+          data-cursor="OPEN"
+        >
+
+          <div class="project-heading">
+
+            <div>
+
+              <p class="project-category">
+                REACT / CLIENT WEBSITE
+              </p>
+
+              <h3>
+                RESTAURANT
+                <span>GORHIM</span>
+              </h3>
+
+            </div>
+
+
+            <p class="project-side-note">
+              Restaurant website focused on atmosphere,
+              menu presentation and digital identity.
+            </p>
+
+          </div>
+
+
+          <div class="project-visual gorhim-art">
+
+            <div class="gorhim-brand">
+              GORHIM
+            </div>
+
+            <div class="gorhim-circle"></div>
+
+            <div class="gorhim-line gorhim-line-one"></div>
+            <div class="gorhim-line gorhim-line-two"></div>
+
+
+            <div class="gorhim-menu">
+
+              <span>RESTAURANT</span>
+              <span>MENU / LOCATION</span>
+              <span>DIGITAL EXPERIENCE</span>
+
+            </div>
+
+
+            <div class="art-corner-label">
+              GORHIM / DIGITAL EDITION
+            </div>
+
+          </div>
+
+
+          <div class="project-footer">
+
+            <p>
+              A modern restaurant website designed to give the business
+              a stronger and more contemporary online presence.
+            </p>
+
+
+            <div class="project-footer-meta">
+
+              <span>
+                React / Vite / CSS / JavaScript
+              </span>
+
+              <span class="view-project">
+                View Repository ↗
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             AI CASE GENERATOR
+        ================================================== -->
+
+        <a
+          href="https://github.com/janhri03/ai-case-generator"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-item project-offset reveal"
+          data-cursor="OPEN"
+        >
+
+          <div class="project-heading">
+
+            <div>
+
+              <p class="project-category">
+                AI / TWEEKRACHT / EDUCATION
+              </p>
+
+              <h3>
+                AI CASE
+                <span>GENERATOR</span>
+              </h3>
+
+            </div>
+
+
+            <p class="project-side-note">
+              Turning real social-work documents
+              into educational game scenarios.
+            </p>
+
+          </div>
+
+
+          <div class="project-visual ai-art">
+
+            <div class="ai-document document-one">
+
+              <span>
+                CASE FILE
+              </span>
+
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+
+            </div>
+
+
+            <div class="ai-document document-two">
+
+              <span>
+                SOCIAL QUALITY
+              </span>
+
+              <div></div>
+              <div></div>
+              <div></div>
+
+            </div>
+
+
+            <div class="ai-core">
+              AI
+            </div>
+
+
+            <div class="ai-node node-a"></div>
+            <div class="ai-node node-b"></div>
+            <div class="ai-node node-c"></div>
+
+
+            <div class="ai-caption">
+              DOCUMENT
+              <span>→</span>
+              CASE
+              <span>→</span>
+              GAME
+            </div>
+
+
+            <div class="art-corner-label">
+              TWEEKRACHT / SOCIAL QUALITY THEORY
+            </div>
+
+          </div>
+
+
+          <div class="project-footer">
+
+            <p>
+              An AI-powered tool that transforms case documents
+              into structured scenarios for Tweekracht's educational
+              board game.
+            </p>
+
+
+            <div class="project-footer-meta">
+
+              <span>
+                Flutter / JSON / API / Python
+              </span>
+
+              <span class="view-project">
+                View Repository ↗
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             DATING APP / AYA
+        ================================================== -->
+
+        <a
+          href="https://github.com/janhri03/dating-app"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-item reveal"
+          data-cursor="OPEN"
+        >
+
+          <div class="project-heading">
+
+            <div>
+
+              <p class="project-category">
+                SWIFT / MOBILE / UX
+              </p>
+
+              <h3>
+                DATING
+                <span>APP</span>
+              </h3>
+
+            </div>
+
+
+            <p class="project-side-note">
+              A dating concept built around
+              personality, music and voice.
+            </p>
+
+          </div>
+
+
+          <div class="project-visual dating-art">
+
+            <div class="dating-orbit"></div>
+
+
+            <div class="dating-phone phone-back">
+
+              <div class="dating-small-title">
+                AYA
+              </div>
+
+              <div class="dating-circle"></div>
+
+              <span>
+                MUSIC MATCH
+              </span>
+
+            </div>
+
+
+            <div class="dating-phone phone-front">
+
+              <div class="dating-logo">
+                AYA
+              </div>
+
+              <div class="dating-profile">
+
+                <div class="profile-head"></div>
+
+                <div class="profile-body"></div>
+
+              </div>
+
+
+              <p>
+                VOICE.<br>
+                MUSIC.<br>
+                CONNECTION.
+              </p>
+
+            </div>
+
+
+            <div class="dating-word">
+              CONNECTION
+            </div>
+
+
+            <div class="art-corner-label">
+              MOBILE EXPERIENCE / SWIFT
+            </div>
+
+          </div>
+
+
+          <div class="project-footer">
+
+            <p>
+              A mobile dating experience focused on profile discovery,
+              voice interaction and connecting users through music taste.
+            </p>
+
+
+            <div class="project-footer-meta">
+
+              <span>
+                Swift / UX / UI Design
+              </span>
+
+              <span class="view-project">
+                View Repository ↗
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             INTERACTIVE STORYTELLING
+        ================================================== -->
+
+        <a
+          href="https://github.com/janhri03/multimedium"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-item project-offset reveal"
+          data-cursor="OPEN"
+        >
+
+          <div class="project-heading">
+
+            <div>
+
+              <p class="project-category">
+                WEB / STORY / INTERACTION
+              </p>
+
+              <h3>
+                INTERACTIVE
+                <span>STORYTELLING</span>
+              </h3>
+
+            </div>
+
+
+            <p class="project-side-note">
+              A narrative experience where
+              user choices change what happens next.
+            </p>
+
+          </div>
+
+
+          <div class="project-visual story-art">
+
+            <div class="story-question">
+
+              WHAT
+
+              <span>
+                HAPPENS
+              </span>
+
+              NEXT?
+
+            </div>
+
+
+            <div class="story-choice choice-one">
+              FOLLOW →
+            </div>
+
+
+            <div class="story-choice choice-two">
+              TURN BACK ←
+            </div>
+
+
+            <div class="story-path story-path-one"></div>
+            <div class="story-path story-path-two"></div>
+
+
+            <div class="story-center"></div>
+
+
+            <div class="art-corner-label">
+              YOUR CHOICE CHANGES THE STORY
+            </div>
+
+          </div>
+
+
+          <div class="project-footer">
+
+            <p>
+              An interactive narrative project where the audience
+              influences the story by choosing different paths.
+            </p>
+
+
+            <div class="project-footer-meta">
+
+              <span>
+                HTML / CSS / JavaScript
+              </span>
+
+              <span class="view-project">
+                View Repository ↗
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             CORSA CAR AUDIO
+        ================================================== -->
+
+        <a
+          href="https://github.com/Janhri03/car-app.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-item reveal"
+          data-cursor="OPEN"
+        >
+
+          <div class="project-heading">
+
+            <div>
+
+              <p class="project-category">
+                SWIFT / VOICE / AUTOMOTIVE
+              </p>
+
+              <h3>
+                CORSA
+                <span>CAR AUDIO</span>
+              </h3>
+
+            </div>
+
+
+            <p class="project-side-note">
+              A voice-controlled music interface
+              designed for safer driving.
+            </p>
+
+          </div>
+
+
+          <div class="project-visual corsa-art">
+
+            <div class="corsa-record">
+
+              <div class="record-ring"></div>
+
+              <div class="record-label">
+
+                <span>
+                  CORSA
+                </span>
+
+                DRIVE EDITION
+
+              </div>
+
+            </div>
+
+
+            <div class="corsa-interface">
+
+              <p>
+                NOW PLAYING
+              </p>
+
+
+              <h4>
+                CORSA
+              </h4>
+
+
+              <span>
+                VOICE CONTROL ACTIVE
+              </span>
+
+
+              <div class="corsa-progress">
+
+                <div></div>
+
+              </div>
+
+            </div>
+
+
+            <div class="equalizer">
+
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </div>
+
+
+            <div class="corsa-wave">
+              ~ ~ ~ ~ ~ ~ ~ ~
+            </div>
+
+
+            <div class="art-corner-label">
+              CORSA / VOICE CONTROLLED AUDIO
+            </div>
+
+          </div>
+
+
+          <div class="project-footer">
+
+            <p>
+              A voice-controlled car audio application designed
+              to let drivers control music without relying on
+              distracting touch interactions.
+            </p>
+
+
+            <div class="project-footer-meta">
+
+              <span>
+                Swift / Speech Recognition / AVFoundation
+              </span>
+
+              <span class="view-project">
+                View Repository ↗
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             FERRARI F40
+        ================================================== -->
+
+        <a
+          href="https://github.com/Janhri03/interactive-ferrari-f40.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-item project-offset reveal"
+          data-cursor="OPEN"
+        >
+
+          <div class="project-heading">
+
+            <div>
+
+              <p class="project-category">
+                THREE.JS / WEB / 3D
+              </p>
+
+              <h3>
+                INTERACTIVE
+                <span>FERRARI F40</span>
+              </h3>
+
+            </div>
+
+
+            <p class="project-side-note">
+              A digital automotive showcase
+              built around 3D exploration.
+            </p>
+
+          </div>
+
+
+          <div class="project-visual ferrari-art">
+
+            <div class="ferrari-big-type">
+              F40
+            </div>
+
+
+            <div class="ferrari-car">
+
+              <div class="ferrari-roof"></div>
+
+              <div class="ferrari-body"></div>
+
+              <div class="ferrari-spoiler"></div>
+
+              <div class="wheel wheel-left"></div>
+              <div class="wheel wheel-right"></div>
+
+            </div>
+
+
+            <div class="ferrari-spec">
+
+              <span>
+                FERRARI
+              </span>
+
+              <span>
+                1987
+              </span>
+
+              <span>
+                478 HP
+              </span>
+
+              <span>
+                INTERACTIVE 3D
+              </span>
+
+            </div>
+
+
+            <div class="ferrari-crosshair crosshair-one"></div>
+            <div class="ferrari-crosshair crosshair-two"></div>
+
+
+            <div class="art-corner-label">
+              AUTOMOTIVE DIGITAL ARCHIVE
+            </div>
+
+          </div>
+
+
+          <div class="project-footer">
+
+            <p>
+              A Three.js experience that allows users to rotate,
+              inspect and explore the Ferrari F40 in an interactive
+              digital environment.
+            </p>
+
+
+            <div class="project-footer-meta">
+
+              <span>
+                HTML / CSS / JavaScript / Three.js
+              </span>
+
+              <span class="view-project">
+                View Repository ↗
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             FEEDBACK PLANET
+        ================================================== -->
+
+        <a
+          href="https://github.com/Janhri03/feedback-planet.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-item reveal"
+          data-cursor="OPEN"
+        >
+
+          <div class="project-heading">
+
+            <div>
+
+              <p class="project-category">
+                GAMIFICATION / FEEDBACK / WEB
+              </p>
+
+              <h3>
+                FEEDBACK
+                <span>PLANET</span>
+              </h3>
+
+            </div>
+
+
+            <p class="project-side-note">
+              Turning standard feedback into
+              a visual evolving world.
+            </p>
+
+          </div>
+
+
+          <div class="project-visual planet-art">
+
+            <div class="planet-glow"></div>
+
+
+            <div class="planet">
+
+              <div class="planet-shadow"></div>
+
+              <div class="planet-ring"></div>
+
+            </div>
+
+
+            <div class="planet-star star-one"></div>
+            <div class="planet-star star-two"></div>
+            <div class="planet-star star-three"></div>
+            <div class="planet-star star-four"></div>
+            <div class="planet-star star-five"></div>
+
+
+            <div class="planet-copy">
+
+              FEEDBACK
+
+              <span>
+                CHANGES
+              </span>
+
+              EVERYTHING
+
+            </div>
+
+
+            <div class="art-corner-label">
+              INPUT → WORLD → EVOLUTION
+            </div>
+
+          </div>
+
+
+          <div class="project-footer">
+
+            <p>
+              A gamified feedback platform where user responses
+              influence and evolve a digital planet instead of
+              disappearing into a traditional form.
+            </p>
+
+
+            <div class="project-footer-meta">
+
+              <span>
+                HTML / CSS / JavaScript
+              </span>
+
+              <span class="view-project">
+                View Repository ↗
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SKILLS
+    ====================================================== -->
+
+    <section id="skills" class="skills section">
+
+      <div class="skills-heading reveal">
+
+        <p class="section-marker">
+          THINGS I WORK WITH
+        </p>
+
+
+        <h2>
+          TOOLBOX
+        </h2>
+
+      </div>
+
+
+      <div class="skill-cloud reveal">
+
+        <span class="skill skill-xl">
+          HTML
+        </span>
+
+        <span class="skill skill-md skill-tilt-left">
+          FIGMA
+        </span>
+
+        <span class="skill skill-lg">
+          JAVASCRIPT
+        </span>
+
+        <span class="skill skill-sm">
+          GIT
+        </span>
+
+        <span class="skill skill-xl skill-outline">
+          CSS
+        </span>
+
+        <span class="skill skill-md">
+          SWIFT
+        </span>
+
+        <span class="skill skill-lg skill-tilt-right">
+          FLUTTER
+        </span>
+
+        <span class="skill skill-sm">
+          VS CODE
+        </span>
+
+        <span class="skill skill-md skill-serif">
+          UX/UI
+        </span>
+
+        <span class="skill skill-lg">
+          REACT
+        </span>
+
+        <span class="skill skill-sm">
+          WORDPRESS
+        </span>
+
+        <span class="skill skill-md skill-outline">
+          THREE.JS
+        </span>
+
+      </div>
+
+
+      <div class="skills-note reveal">
+
+        <p>
+          I move between design and development instead of
+          treating them as two separate worlds.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section id="contact" class="contact section">
+
+      <div class="contact-background-text">
+        TALK
+      </div>
+
+
+      <div class="contact-inner">
+
+        <p class="section-marker reveal">
+          SIDE B / CONTACT
+        </p>
+
+
+        <h2 class="contact-title reveal">
+
+          LET'S MAKE
+
+          <span>
+            SOMETHING
+          </span>
+
+          WORTH LOOKING AT.
+
+        </h2>
+
+
+        <div class="contact-row reveal">
+
+          <button
+            class="contact-link copy-email"
+            type="button"
+            data-cursor="COPY"
+          >
+
+            Email
+
+            <span>
+              ↗
+            </span>
+
+          </button>
+
+
+          <a
+            href="https://www.linkedin.com/in/zhan-hristov-4282b42b1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+            data-cursor="GO"
+          >
+
+            LinkedIn
+
+            <span>
+              ↗
+            </span>
+
+          </a>
+
+
+          <a
+            href="https://www.instagram.com/django_vrn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+            data-cursor="GO"
+          >
+
+            Instagram
+
+            <span>
+              ↗
+            </span>
+
+          </a>
+
+
+          <a
+            href="https://github.com/Janhri03"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+            data-cursor="GO"
+          >
+
+            GitHub
+
+            <span>
+              ↗
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
   <footer class="site-footer">
-    <div class="container footer-content">
-      <p>Zhan Hristov</p>
-      <div class="footer-links">
-        <a href="mailto:janhri03@gmail.com" id="copyEmail">Email</a>
-        <a href="https://www.linkedin.com/in/zhan-hristov-4282b42b1/" target="_blank">LinkedIn</a>
-        <a href="https://www.instagram.com/django_vrn/" target="_blank">Instagram</a>
-        <a href="https://github.com/Janhri03" target="_blank">GitHub</a>
-      </div>
+
+    <div>
+      ZHAN HRISTOV
     </div>
+
+    <div>
+      FRONT-END / WEB DESIGN
+    </div>
+
+    <div>
+      MMXXVI
+    </div>
+
   </footer>
 
-  <div id="toast" class="toast">EMAIL COPIED</div>
+
+
+  <!-- EMAIL TOAST -->
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  >
+    EMAIL COPIED
+  </div>
+
+
   <script src="script.js"></script>
+
 </body>
+
 </html>
