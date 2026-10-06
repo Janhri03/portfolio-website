@@ -26,10 +26,25 @@
   >
 
   <link rel="stylesheet" href="style.css" />
+  <script>
+    // Keep the first frame composed; always unlock if a dependency cannot load.
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !location.hash) {
+      document.documentElement.classList.add('motion-pending');
+      window.motionSafetyTimer = setTimeout(function () {
+        document.documentElement.classList.remove('motion-pending');
+      }, 4000);
+    }
+  </script>
 </head>
 
 
 <body>
+
+  <div class="page-intro" aria-hidden="true">
+    <div class="intro-title-mask"><div class="intro-title">ZH<span>.</span></div></div>
+    <div class="intro-credit-mask"><p class="intro-credit">FRONT-END DEVELOPER</p></div>
+    <div class="intro-rule"></div>
+  </div>
 
   <!-- CUSTOM CURSOR -->
   <div class="cursor-dot"></div>
@@ -72,6 +87,8 @@
             About
           </a>
         </li>
+        <li><a href="#currently" class="nav-link">Currently</a></li>
+
 
         <li>
           <a href="#projects" class="nav-link">
@@ -344,6 +361,21 @@
          PROJECTS
     ====================================================== -->
 
+    <!-- CURRENT INTERNATIONAL MINOR / IN PROGRESS -->
+    <section id="currently" class="currently section" aria-labelledby="minor-preview-title">
+      <div class="minor-topline"><p class="section-marker">CURRENTLY / INTERNATIONAL MINOR</p><span>FONTYS / 2026</span></div>
+      <div class="minor-preview">
+        <div class="minor-intro"><h2 id="minor-preview-title">CHINA AND THE<br><span>WORLD ECONOMY</span></h2><p>FONTYS × SHANGHAI</p></div>
+        <div class="minor-connection" aria-hidden="true">
+          <div class="minor-cities"><span>EINDHOVEN</span><span>SHANGHAI</span></div>
+          <div class="minor-wire"><span class="minor-wire-line"></span><i class="minor-node minor-node-start"></i><i class="minor-node minor-node-end"></i><i class="minor-packet"></i></div>
+          <div class="minor-transmission"><span>RESEARCH</span><span>TECHNOLOGY</span><span>COLLABORATION</span></div>
+        </div>
+        <p class="minor-status">International collaboration / research in progress</p>
+        <button class="minor-explore" type="button" aria-haspopup="dialog" aria-controls="minor-dialog" aria-label="Explore the China and the World Economy minor" data-cursor="EXPLORE MINOR"><span>EXPLORE MINOR <b aria-hidden="true">↗</b></span></button>
+      </div>
+    </section>
+
     <section id="projects" class="projects section">
 
       <div class="projects-intro reveal">
@@ -368,45 +400,8 @@
 
 
       <div class="project-list">
-
-
-        <!-- =================================================
-             GORHIM
-        ================================================== -->
-
-        <a
-          href="https://github.com/Janhri03/restaurant-gorhim.git"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="project-item reveal"
-          data-cursor="OPEN"
-        >
-
-          <div class="project-heading">
-
-            <div>
-
-              <p class="project-category">
-                REACT / CLIENT WEBSITE
-              </p>
-
-              <h3>
-                RESTAURANT
-                <span>GORHIM</span>
-              </h3>
-
-            </div>
-
-
-            <p class="project-side-note">
-              Restaurant website focused on atmosphere,
-              menu presentation and digital identity.
-            </p>
-
-          </div>
-
-
-          <div class="project-visual gorhim-art">
+<article class="project-item" data-kind="gorhim" data-project-name="Restaurant Gorhim" data-repo="https://github.com/Janhri03/restaurant-gorhim.git">
+    <div class="project-visual gorhim-art">
 
             <div class="gorhim-brand">
               GORHIM
@@ -429,74 +424,122 @@
 
             <div class="art-corner-label">
               GORHIM / DIGITAL EDITION
+            </div></div>
+    <div class="project-heading"><div><p class="project-category">REACT / CLIENT WEBSITE</p><h3 id="project-gorhim-title">
+                RESTAURANT
+                <span>GORHIM</span>
+              </h3></div></div>
+    <div class="project-grid-meta"><span>React / Vite / CSS / JavaScript</span></div>
+    <button class="project-open" type="button" aria-labelledby="project-gorhim-title" aria-haspopup="dialog" data-cursor="VIEW PROJECT"><span class="project-open-label">View project <span>↗</span></span></button>
+    <div class="project-data" hidden><p class="project-description">A modern restaurant website built to give Gorhim a stronger and more contemporary online presence. I developed the website with React and Vite, focusing on responsive design, clear navigation, menu presentation and a visual identity that reflects the restaurant.</p><p class="project-contribution">I developed the website with React and Vite, focusing on responsive design, clear navigation, menu presentation and a visual identity that reflects the restaurant.</p><p class="project-technologies">React / Vite / CSS / JavaScript</p></div>
+  </article>
+
+<article class="project-item" data-kind="ferrari" data-project-name="Interactive Ferrari F40" data-repo="https://github.com/Janhri03/interactive-ferrari-f40.git">
+    <div class="project-visual ferrari-art">
+
+            <div class="ferrari-big-type">
+              F40
             </div>
 
-          </div>
+
+            <div class="ferrari-car">
+
+              <div class="ferrari-roof"></div>
+
+              <div class="ferrari-body"></div>
+
+              <div class="ferrari-spoiler"></div>
+
+              <div class="wheel wheel-left"></div>
+              <div class="wheel wheel-right"></div>
+
+            </div>
 
 
-          <div class="project-footer">
-
-            <p>
-              A modern restaurant website designed to give the business
-              a stronger and more contemporary online presence.
-            </p>
-
-
-            <div class="project-footer-meta">
+            <div class="ferrari-spec">
 
               <span>
-                React / Vite / CSS / JavaScript
+                FERRARI
               </span>
 
-              <span class="view-project">
-                View Repository ↗
+              <span>
+                1987
+              </span>
+
+              <span>
+                478 HP
+              </span>
+
+              <span>
+                INTERACTIVE 3D
               </span>
 
             </div>
 
-          </div>
 
-        </a>
+            <div class="ferrari-crosshair crosshair-one"></div>
+            <div class="ferrari-crosshair crosshair-two"></div>
 
 
+            <div class="art-corner-label">
+              AUTOMOTIVE DIGITAL ARCHIVE
+            </div><div class="speed-lines"><i></i><i></i><i></i></div></div>
+    <div class="project-heading"><div><p class="project-category">THREE.JS / WEB / 3D</p><h3 id="project-ferrari-title">
+                INTERACTIVE
+                <span>FERRARI F40</span>
+              </h3></div></div>
+    <div class="project-grid-meta"><span>HTML / CSS / JavaScript / Three.js</span></div>
+    <button class="project-open" type="button" aria-labelledby="project-ferrari-title" aria-haspopup="dialog" data-cursor="VIEW PROJECT"><span class="project-open-label">View project <span>↗</span></span></button>
+    <div class="project-data" hidden><p class="project-description">An interactive 3D web experience built around the Ferrari F40. The website allows users to explore the car by rotating the 3D model, zooming into specific parts and interacting with hotspots. I worked on integrating the 3D model, rotation controls, camera movement and interactive elements using Three.js.</p><p class="project-contribution">I worked on integrating the 3D model, rotation controls, camera movement and interactive elements using Three.js.</p><p class="project-technologies">HTML / CSS / JavaScript / Three.js</p></div>
+  </article>
 
-        <!-- =================================================
-             AI CASE GENERATOR
-        ================================================== -->
+<article class="project-item" data-kind="story" data-project-name="Interactive Storytelling" data-repo="https://github.com/janhri03/multimedium">
+    <div class="project-visual story-art">
 
-        <a
-          href="https://github.com/janhri03/ai-case-generator"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="project-item project-offset reveal"
-          data-cursor="OPEN"
-        >
+            <div class="story-question">
 
-          <div class="project-heading">
+              WHAT
 
-            <div>
+              <span>
+                HAPPENS
+              </span>
 
-              <p class="project-category">
-                AI / TWEEKRACHT / EDUCATION
-              </p>
-
-              <h3>
-                AI CASE
-                <span>GENERATOR</span>
-              </h3>
+              NEXT?
 
             </div>
 
 
-            <p class="project-side-note">
-              Turning real social-work documents
-              into educational game scenarios.
-            </p>
-
-          </div>
+            <div class="story-choice choice-one">
+              FOLLOW →
+            </div>
 
 
-          <div class="project-visual ai-art">
+            <div class="story-choice choice-two">
+              TURN BACK ←
+            </div>
+
+
+            <div class="story-path story-path-one"></div>
+            <div class="story-path story-path-two"></div>
+
+
+            <div class="story-center"></div>
+
+
+            <div class="art-corner-label">
+              YOUR CHOICE CHANGES THE STORY
+            </div></div>
+    <div class="project-heading"><div><p class="project-category">WEB / STORY / INTERACTION</p><h3 id="project-story-title">
+                INTERACTIVE
+                <span>STORYTELLING</span>
+              </h3></div></div>
+    <div class="project-grid-meta"><span>HTML / CSS / JavaScript</span></div>
+    <button class="project-open" type="button" aria-labelledby="project-story-title" aria-haspopup="dialog" data-cursor="VIEW PROJECT"><span class="project-open-label">View project <span>↗</span></span></button>
+    <div class="project-data" hidden><p class="project-description">A group project exploring interactive storytelling for the 18 September Foundation in Eindhoven. We designed an experience aimed at making the story of Eindhoven's liberation more engaging for younger audiences by allowing users to interact with the narrative and influence how they experience the story.</p><p class="project-contribution">We designed an experience aimed at making the story of Eindhoven's liberation more engaging for younger audiences by allowing users to interact with the narrative and influence how they experience the story.</p><p class="project-technologies">HTML / CSS / JavaScript</p></div>
+  </article>
+
+<article class="project-item" data-kind="ai" data-project-name="AI Case Generator" data-repo="https://github.com/janhri03/ai-case-generator">
+    <div class="project-visual ai-art">
 
             <div class="ai-document document-one">
 
@@ -546,75 +589,18 @@
 
             <div class="art-corner-label">
               TWEEKRACHT / SOCIAL QUALITY THEORY
-            </div>
+            </div><div class="scan-band"></div></div>
+    <div class="project-heading"><div><p class="project-category">AI / TWEEKRACHT / EDUCATION</p><h3 id="project-ai-title">
+                AI CASE
+                <span>GENERATOR</span>
+              </h3></div></div>
+    <div class="project-grid-meta"><span>Flutter / JSON / API / Python</span></div>
+    <button class="project-open" type="button" aria-labelledby="project-ai-title" aria-haspopup="dialog" data-cursor="VIEW PROJECT"><span class="project-open-label">View project <span>↗</span></span></button>
+    <div class="project-data" hidden><p class="project-description">A client project developed for Tweekracht that uses AI to transform social-work case documents into structured scenarios for an educational board game based on Social Quality Theory. The tool was designed to reduce the manual work involved in creating cases and make generated scenarios easier to review, edit and use.</p><p class="project-technologies">Flutter / JSON / API / Python</p></div>
+  </article>
 
-          </div>
-
-
-          <div class="project-footer">
-
-            <p>
-              An AI-powered tool that transforms case documents
-              into structured scenarios for Tweekracht's educational
-              board game.
-            </p>
-
-
-            <div class="project-footer-meta">
-
-              <span>
-                Flutter / JSON / API / Python
-              </span>
-
-              <span class="view-project">
-                View Repository ↗
-              </span>
-
-            </div>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- =================================================
-             DATING APP / AYA
-        ================================================== -->
-
-        <a
-          href="https://github.com/janhri03/dating-app"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="project-item reveal"
-          data-cursor="OPEN"
-        >
-
-          <div class="project-heading">
-
-            <div>
-
-              <p class="project-category">
-                SWIFT / MOBILE / UX
-              </p>
-
-              <h3>
-                DATING
-                <span>APP</span>
-              </h3>
-
-            </div>
-
-
-            <p class="project-side-note">
-              A dating concept built around
-              personality, music and voice.
-            </p>
-
-          </div>
-
-
-          <div class="project-visual dating-art">
+<article class="project-item" data-kind="aya" data-project-name="Dating App — Aya" data-repo="https://github.com/janhri03/dating-app">
+    <div class="project-visual dating-art">
 
             <div class="dating-orbit"></div>
 
@@ -665,175 +651,15 @@
 
             <div class="art-corner-label">
               MOBILE EXPERIENCE / SWIFT
-            </div>
-
-          </div>
-
-
-          <div class="project-footer">
-
-            <p>
-              A mobile dating experience focused on profile discovery,
-              voice interaction and connecting users through music taste.
-            </p>
-
-
-            <div class="project-footer-meta">
-
-              <span>
-                Swift / UX / UI Design
-              </span>
-
-              <span class="view-project">
-                View Repository ↗
-              </span>
-
-            </div>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- =================================================
-             INTERACTIVE STORYTELLING
-        ================================================== -->
-
-        <a
-          href="https://github.com/janhri03/multimedium"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="project-item project-offset reveal"
-          data-cursor="OPEN"
-        >
-
-          <div class="project-heading">
-
-            <div>
-
-              <p class="project-category">
-                WEB / STORY / INTERACTION
-              </p>
-
-              <h3>
-                INTERACTIVE
-                <span>STORYTELLING</span>
-              </h3>
-
-            </div>
-
-
-            <p class="project-side-note">
-              A narrative experience where
-              user choices change what happens next.
-            </p>
-
-          </div>
-
-
-          <div class="project-visual story-art">
-
-            <div class="story-question">
-
-              WHAT
-
-              <span>
-                HAPPENS
-              </span>
-
-              NEXT?
-
-            </div>
-
-
-            <div class="story-choice choice-one">
-              FOLLOW →
-            </div>
-
-
-            <div class="story-choice choice-two">
-              TURN BACK ←
-            </div>
-
-
-            <div class="story-path story-path-one"></div>
-            <div class="story-path story-path-two"></div>
-
-
-            <div class="story-center"></div>
-
-
-            <div class="art-corner-label">
-              YOUR CHOICE CHANGES THE STORY
-            </div>
-
-          </div>
-
-
-          <div class="project-footer">
-
-            <p>
-              An interactive narrative project where the audience
-              influences the story by choosing different paths.
-            </p>
-
-
-            <div class="project-footer-meta">
-
-              <span>
-                HTML / CSS / JavaScript
-              </span>
-
-              <span class="view-project">
-                View Repository ↗
-              </span>
-
-            </div>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- =================================================
-             CORSA CAR AUDIO
-        ================================================== -->
-
-        <a
-          href="https://github.com/Janhri03/car-app.git"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="project-item reveal"
-          data-cursor="OPEN"
-        >
-
-          <div class="project-heading">
-
-            <div>
-
-              <p class="project-category">
-                SWIFT / VOICE / AUTOMOTIVE
-              </p>
-
-              <h3>
-                CORSA
-                <span>CAR AUDIO</span>
-              </h3>
-
-            </div>
-
-
-            <p class="project-side-note">
-              A voice-controlled music interface
-              designed for safer driving.
-            </p>
-
-          </div>
-
-
-          <div class="project-visual corsa-art">
+            </div><div class="aya-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="project-heading"><div><p class="project-category">SWIFT / MOBILE / UX</p><h3 id="project-aya-title">DATING APP<span>AYA</span></h3></div></div>
+    <div class="project-grid-meta"><span>Swift / UX / UI Design</span></div>
+    <button class="project-open" type="button" aria-labelledby="project-aya-title" aria-haspopup="dialog" data-cursor="VIEW PROJECT"><span class="project-open-label">View project <span>↗</span></span></button>
+    <div class="project-data" hidden><p class="project-description">A mobile dating app concept developed in Swift with a focus on making profiles feel more personal and expressive. Aya combines traditional profile discovery with voice interaction, music taste and conversation prompts to create a more engaging way for users to discover potential matches.</p><p class="project-technologies">Swift / UX / UI Design</p></div>
+  </article>
+
+<article class="project-item" data-kind="corsa" data-project-name="Corsa — Car Audio" data-repo="https://github.com/Janhri03/car-app.git">
+    <div class="project-visual corsa-art">
 
             <div class="corsa-record">
 
@@ -899,260 +725,20 @@
 
             <div class="art-corner-label">
               CORSA / VOICE CONTROLLED AUDIO
-            </div>
-
-          </div>
-
-
-          <div class="project-footer">
-
-            <p>
-              A voice-controlled car audio application designed
-              to let drivers control music without relying on
-              distracting touch interactions.
-            </p>
-
-
-            <div class="project-footer-meta">
-
-              <span>
-                Swift / Speech Recognition / AVFoundation
-              </span>
-
-              <span class="view-project">
-                View Repository ↗
-              </span>
-
-            </div>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- =================================================
-             FERRARI F40
-        ================================================== -->
-
-        <a
-          href="https://github.com/Janhri03/interactive-ferrari-f40.git"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="project-item project-offset reveal"
-          data-cursor="OPEN"
-        >
-
-          <div class="project-heading">
-
-            <div>
-
-              <p class="project-category">
-                THREE.JS / WEB / 3D
-              </p>
-
-              <h3>
-                INTERACTIVE
-                <span>FERRARI F40</span>
-              </h3>
-
-            </div>
-
-
-            <p class="project-side-note">
-              A digital automotive showcase
-              built around 3D exploration.
-            </p>
-
-          </div>
-
-
-          <div class="project-visual ferrari-art">
-
-            <div class="ferrari-big-type">
-              F40
-            </div>
-
-
-            <div class="ferrari-car">
-
-              <div class="ferrari-roof"></div>
-
-              <div class="ferrari-body"></div>
-
-              <div class="ferrari-spoiler"></div>
-
-              <div class="wheel wheel-left"></div>
-              <div class="wheel wheel-right"></div>
-
-            </div>
-
-
-            <div class="ferrari-spec">
-
-              <span>
-                FERRARI
-              </span>
-
-              <span>
-                1987
-              </span>
-
-              <span>
-                478 HP
-              </span>
-
-              <span>
-                INTERACTIVE 3D
-              </span>
-
-            </div>
-
-
-            <div class="ferrari-crosshair crosshair-one"></div>
-            <div class="ferrari-crosshair crosshair-two"></div>
-
-
-            <div class="art-corner-label">
-              AUTOMOTIVE DIGITAL ARCHIVE
-            </div>
-
-          </div>
-
-
-          <div class="project-footer">
-
-            <p>
-              A Three.js experience that allows users to rotate,
-              inspect and explore the Ferrari F40 in an interactive
-              digital environment.
-            </p>
-
-
-            <div class="project-footer-meta">
-
-              <span>
-                HTML / CSS / JavaScript / Three.js
-              </span>
-
-              <span class="view-project">
-                View Repository ↗
-              </span>
-
-            </div>
-
-          </div>
-
-        </a>
-
-
-
-        <!-- =================================================
-             FEEDBACK PLANET
-        ================================================== -->
-
-        <a
-          href="https://github.com/Janhri03/feedback-planet.git"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="project-item reveal"
-          data-cursor="OPEN"
-        >
-
-          <div class="project-heading">
-
-            <div>
-
-              <p class="project-category">
-                GAMIFICATION / FEEDBACK / WEB
-              </p>
-
-              <h3>
-                FEEDBACK
-                <span>PLANET</span>
-              </h3>
-
-            </div>
-
-
-            <p class="project-side-note">
-              Turning standard feedback into
-              a visual evolving world.
-            </p>
-
-          </div>
-
-
-          <div class="project-visual planet-art">
-
-            <div class="planet-glow"></div>
-
-
-            <div class="planet">
-
-              <div class="planet-shadow"></div>
-
-              <div class="planet-ring"></div>
-
-            </div>
-
-
-            <div class="planet-star star-one"></div>
-            <div class="planet-star star-two"></div>
-            <div class="planet-star star-three"></div>
-            <div class="planet-star star-four"></div>
-            <div class="planet-star star-five"></div>
-
-
-            <div class="planet-copy">
-
-              FEEDBACK
-
-              <span>
-                CHANGES
-              </span>
-
-              EVERYTHING
-
-            </div>
-
-
-            <div class="art-corner-label">
-              INPUT → WORLD → EVOLUTION
-            </div>
-
-          </div>
-
-
-          <div class="project-footer">
-
-            <p>
-              A gamified feedback platform where user responses
-              influence and evolve a digital planet instead of
-              disappearing into a traditional form.
-            </p>
-
-
-            <div class="project-footer-meta">
-
-              <span>
-                HTML / CSS / JavaScript
-              </span>
-
-              <span class="view-project">
-                View Repository ↗
-              </span>
-
-            </div>
-
-          </div>
-
-        </a>
-
-
-      </div>
-
-    </section>
+            </div></div>
+    <div class="project-heading"><div><p class="project-category">SWIFT / VOICE / AUTOMOTIVE</p><h3 id="project-corsa-title">
+                CORSA
+                <span>CAR AUDIO</span>
+              </h3></div></div>
+    <div class="project-grid-meta"><span>Swift / Speech Recognition / AVFoundation</span></div>
+    <button class="project-open" type="button" aria-labelledby="project-corsa-title" aria-haspopup="dialog" data-cursor="VIEW PROJECT"><span class="project-open-label">View project <span>↗</span></span></button>
+    <div class="project-data" hidden><p class="project-description">A voice-controlled car audio application developed in Swift to reduce the need for drivers to interact physically with their phone while driving. Users can control functions such as play, pause, next, previous and volume through voice commands, using speech recognition and AVFoundation.</p><p class="project-technologies">Swift / Speech Recognition / AVFoundation</p></div>
+  </article>
+
+
+</div>
+
+</section>
 
 
 
@@ -1307,21 +893,7 @@
           </a>
 
 
-          <a
-            href="https://www.instagram.com/django_vrn/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-link"
-            data-cursor="GO"
-          >
 
-            Instagram
-
-            <span>
-              ↗
-            </span>
-
-          </a>
 
 
           <a
@@ -1372,6 +944,32 @@
 
 
 
+<dialog class="project-dialog" aria-labelledby="detail-title" aria-describedby="detail-description">
+  <div class="detail-shell">
+    <header class="detail-header"><span class="detail-category"></span><button class="detail-close" type="button" aria-label="Close project details">Back to work <span>×</span></button></header>
+    <div class="detail-layout"><div class="detail-art"></div><div class="detail-copy">
+      <div class="detail-title-mask"><p class="detail-label">PROJECT</p><h2 id="detail-title"></h2></div>
+      <div class="detail-about"><p class="detail-label">ABOUT</p><p id="detail-description"></p></div>
+      <div class="detail-contribution" hidden><p class="detail-label">MY CONTRIBUTION</p><p></p></div>
+      <div class="detail-technologies"><p>TECH</p><div></div></div>
+      <div class="detail-links"><p class="detail-label">REPOSITORY</p><a class="detail-repository" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a></div>
+    </div></div>
+  </div>
+</dialog>
+
+<dialog id="minor-dialog" class="minor-dialog" aria-labelledby="minor-detail-title">
+  <div class="minor-detail-shell">
+    <header class="minor-detail-header"><span>FONTYS / INTERNATIONAL MINOR / 2026</span><button class="minor-close" type="button" aria-label="Close minor details">BACK TO PORTFOLIO <span aria-hidden="true">×</span></button></header>
+    <div class="minor-detail-connection" aria-hidden="true"><div class="minor-cities"><span>EINDHOVEN</span><span>SHANGHAI</span></div><div class="minor-wire"><span class="minor-wire-line"></span><i class="minor-node minor-node-start"></i><i class="minor-node minor-node-end"></i><i class="minor-packet"></i></div></div>
+    <div class="minor-title-mask"><h2 id="minor-detail-title">CHINA AND THE<br><span>WORLD ECONOMY</span></h2></div>
+    <div class="minor-detail-copy">
+      <section><h3>ABOUT THE MINOR</h3><p>China and the World Economy is an international Fontys minor exploring China's economic development, global influence, business and technological transformation from Western and Chinese perspectives.</p><p>Academic study covers China's history since 1979, contemporary political economy, and smart cities and sustainability, alongside a research project and student reflection.</p></section>
+      <section><h3>EXPERIENCE</h3><p>The programme combines theory with practical research and collaboration with students from Shanghai Institute of Technology, first in a hybrid setting and later in person.</p><p>A study trip of approximately two weeks includes university collaboration, company visits and first-hand exposure to China's business and technology environment.</p></section>
+      <section><h3>MY CURRENT RESEARCH</h3><p class="minor-research-label">INDUSTRIAL ROBOTICS / IN PROGRESS</p><p>I am part of a group researching industrial and manufacturing robotics, with a focus on the Chinese and Dutch robotics ecosystems. We are exploring market developments and potential opportunities for knowledge exchange, from technical and commercial perspectives.</p><p>The project involves an external organisation and international research connected with China. This is an ongoing opportunity to learn, research and collaborate.</p></section>
+    </div>
+  </div>
+</dialog>
+
   <!-- EMAIL TOAST -->
 
   <div
@@ -1384,7 +982,9 @@
   </div>
 
 
-  <script src="script.js"></script>
+  <script defer src="vendor/gsap.min.js"></script>
+  <script defer src="vendor/ScrollTrigger.min.js"></script>
+  <script defer src="script.js"></script>
 
 </body>
 

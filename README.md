@@ -29,7 +29,7 @@ Instead of creating a standard developer portfolio, I focused on making the webs
 - Smooth scroll animations
 - Interactive project cards
 - Mobile hamburger navigation
-- Project previews linked directly to GitHub repositories
+- Animated project overlays with original GitHub repository links
 - Social media/contact integration
 - Email copy notification popup
 
@@ -65,23 +65,26 @@ Includes:
 - Design focus
 - Creative identity
 
+### Currently / International Minor
+
+An ongoing Fontys minor connecting Shanghai and Eindhoven through research into the Chinese and Dutch industrial robotics ecosystems.
+
 ### Projects
 
 A showcase of my main projects:
 
+- Restaurant Gorhim
 - AI Case Generator
 - Dating App
 - Interactive Storytelling Experience
 - Car Audio Player
 - Interactive Ferrari F40
-- Feedback Planet
 
 Each project card includes:
 
-- Visual preview
-- Short description
-- Technologies used
-- Repository link
+- A distinct animated visual, category and technologies
+- Keyboard-accessible project opening
+- Full description and original repository link in an editorial overlay
 
 ### Skills
 
@@ -97,7 +100,6 @@ Simple contact section with:
 
 - Email
 - LinkedIn
-- Instagram
 - GitHub
 
 ---
@@ -151,8 +153,6 @@ UX/UI Designer & Front-End Developer
 GitHub: Janhri03
 
 LinkedIn: zhan-hristov-4282b42b1
-
-Instagram: django_vrn
 
 ---
 
