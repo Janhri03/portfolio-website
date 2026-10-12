@@ -394,6 +394,7 @@
 
   function staticMode() {
     finishOpening();
+    $('.music-art').disabled = true;
     pointerCleanup();
     root.classList.remove('motion-active', 'cursor-enabled');
     $$('.reveal').forEach(element => element.classList.add('show'));
@@ -424,7 +425,7 @@
   hero.prepend(accent);
 
   const headings = new Map();
-  $$('.about-copy h2, .projects-intro h2, .project-heading h3, .skills-heading h2, .contact-title').forEach(heading => headings.set(heading, maskHeading(heading)));
+  $$('.about-copy h2, .projects-intro h2, .project-heading h3, .skills-heading h2, .music-title, .contact-title').forEach(heading => headings.set(heading, maskHeading(heading)));
   const manifestoLines = $$('.manifesto > p').map(paragraph => {
     const mask = document.createElement('div');
     mask.className = 'manifesto-mask';
@@ -574,6 +575,7 @@
       menuState(false);
       nav.inert = matchMedia('(max-width: 768px)').matches;
       if (reduce) { staticMode(); return; }
+      $('.music-art').disabled = false;
       root.classList.add('motion-active');
       const duration = desktop ? 0.78 : 0.55;
       const ease = 'power3.out';
@@ -717,6 +719,82 @@
           scrollTrigger: { id: 'toolbox-word-' + index, trigger: layer, start: 'top 94%', once: true }
         });
       });
+      // Independent visual rhythms; no audio input or playback is involved.
+      const music = $('#music'), musicArt = $('.music-art', music);
+      const musicBars = $$('.music-bars i', music);
+      const musicDepth = $('.music-depth', music);
+      let musicVisible = false, musicHovered = false, musicFocused = false;
+      let musicFrame = 0, musicBounds = null, musicX = 0, musicY = 0, musicPulse = null;
+      const musicLoops = musicBars.map((bar, index) => {
+        const slow = index % 4 === 0;
+        const duration = () => gsap.utils.random(slow ? 0.8 : 0.22, slow ? 1.5 : 0.65);
+        gsap.set(bar, { scaleY: gsap.utils.random(0.3, 0.8) });
+        return gsap.timeline({ id: 'django-waveform-' + index, paused: true, repeat: -1, repeatRefresh: true, delay: index * 0.017 })
+          .to(bar, { scaleY: () => gsap.utils.random(0.65, 1), duration, ease: 'sine.inOut' })
+          .to(bar, { scaleY: () => gsap.utils.random(0.18, 0.55), duration, ease: 'sine.inOut' });
+      });
+      const syncMusic = () => {
+        const playing = musicVisible && !document.hidden;
+        musicLoops.forEach(loop => {
+          loop.timeScale(musicHovered || musicFocused ? 1.3 : 1);
+          playing ? loop.play() : loop.pause();
+        });
+      };
+      const pulseMusic = () => {
+        if (document.hidden) return;
+        musicPulse?.kill();
+        musicPulse = gsap.timeline({ id: 'django-touch-beat', onComplete: () => {
+          gsap.set('.music-beat-ring', { clearProps: 'transform,opacity' });
+        } })
+          .fromTo('.music-beat-ring', { scale: 0.97, opacity: 0.45 }, { scale: 1.12, opacity: 0, duration: 0.75, ease: 'power2.out' }, 0);
+      };
+      gsap.timeline({ id: 'django-entrance', scrollTrigger: { id: 'django-entrance', trigger: music, start: 'top 82%', once: true } })
+        .from(headings.get($('.music-title')), { yPercent: 115, xPercent: i => i ? -5 : 4, duration: 0.7, stagger: 0.14, ease: 'power4.out' }, 0)
+        .from('.music-disc', { clipPath: 'circle(0% at 50% 50%)', scale: 0.86, duration: 0.9, ease: 'power4.inOut', clearProps: 'clipPath,transform' }, 0.15)
+        .from('.music-copy, .music-roles span, .music-role-note, .music-link, .music-exhibit figcaption', { y: 14, opacity: 0, duration: 0.45, stagger: 0.08 }, 0.55)
+        .from('.music-divider', { scaleX: 0, duration: 0.6, stagger: 0.1 }, 0.9)
+        .add(pulseMusic, 0.95);
+      ScrollTrigger.create({ id: 'django-visibility', trigger: music, start: 'top bottom', end: 'bottom top', onToggle: self => {
+        musicVisible = self.isActive; syncMusic();
+        if (!musicVisible) { musicPulse?.kill(); gsap.set('.music-beat-ring', { clearProps: 'transform,opacity' }); }
+      } });
+      gsap.fromTo('.music-disc-grooves', { rotation: -25 }, { rotation: 65, ease: 'none', scrollTrigger: { id: 'django-disc-drift', trigger: music, start: 'top bottom', end: 'bottom top', scrub: desktop ? 0.6 : 0.25 } });
+      const musicEnter = () => { musicHovered = true; musicBounds = musicArt.getBoundingClientRect(); syncMusic(); };
+      const resetMusicDepth = () => {
+        if (musicFrame) cancelAnimationFrame(musicFrame); musicFrame = 0;
+        gsap.to(musicDepth, { x: 0, y: 0, rotation: 0, duration: 0.45, overwrite: true });
+      };
+      const musicLeave = () => { musicHovered = false; musicBounds = null; syncMusic(); resetMusicDepth(); };
+      const musicMove = event => {
+        musicX = event.clientX; musicY = event.clientY;
+        if (!musicFrame) musicFrame = requestAnimationFrame(() => {
+          musicFrame = 0;
+          if (!musicBounds) return;
+          const x = Math.max(-0.5, Math.min(0.5, (musicX - musicBounds.left) / musicBounds.width - 0.5));
+          const y = Math.max(-0.5, Math.min(0.5, (musicY - musicBounds.top) / musicBounds.height - 0.5));
+          gsap.set(musicDepth, { x: x * 12, y: y * 8, rotation: x * 3 });
+        });
+      };
+      const musicFocus = () => { musicFocused = pointer; syncMusic(); pulseMusic(); };
+      const musicBlur = () => { musicFocused = false; syncMusic(); };
+      if (pointer) {
+        musicArt.addEventListener('pointerenter', musicEnter);
+        musicArt.addEventListener('pointerleave', musicLeave);
+        musicArt.addEventListener('pointermove', musicMove);
+      }
+      musicArt.addEventListener('focus', musicFocus);
+      musicArt.addEventListener('blur', musicBlur);
+      musicArt.addEventListener('click', pulseMusic);
+      document.addEventListener('visibilitychange', syncMusic);
+      const cleanupMusic = () => {
+        musicLoops.forEach(loop => loop.kill()); musicPulse?.kill();
+        if (musicFrame) cancelAnimationFrame(musicFrame);
+        musicArt.removeEventListener('pointerenter', musicEnter); musicArt.removeEventListener('pointerleave', musicLeave); musicArt.removeEventListener('pointermove', musicMove);
+        musicArt.removeEventListener('focus', musicFocus); musicArt.removeEventListener('blur', musicBlur); musicArt.removeEventListener('click', pulseMusic);
+        document.removeEventListener('visibilitychange', syncMusic);
+        gsap.killTweensOf(musicDepth);
+        gsap.set([musicDepth, ...musicBars, $('.music-beat-ring')], { clearProps: 'transform,opacity' });
+      };
       revealType($('.contact-title'));
       gsap.from('.contact-row > *', { clipPath: 'inset(0% 100% 0% 0%)', x: -18, duration, stagger: 0.1, ease, scrollTrigger: { id: 'contact-links', trigger: '.contact-row', start: 'top 90%', once: true } });
       if (desktop) gsap.fromTo('.contact-background-text', { xPercent: -8 }, { xPercent: 8, ease: 'none', scrollTrigger: { id: 'contact-depth', trigger: '.contact', start: 'top bottom', end: 'bottom top', scrub: 0.8 } });
@@ -736,6 +814,7 @@
       ScrollTrigger.refresh();
       return () => {
         skipOpening();
+        cleanupMusic();
         projectCleanups.forEach(cleanup => cleanup());
         links.forEach(link => link.removeEventListener('click', skipOpening));
         pointerCleanup(); pointerCleanup = () => {};
