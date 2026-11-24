@@ -17,7 +17,6 @@
   let openingFinished = false;
   let media;
   let toastTimer;
-  let activeLink = links[0];
   let pointerCleanup = () => {};
 
   function finishOpening() {
@@ -57,34 +56,14 @@
     }
   });
 
-  // One shared indicator travels between the existing navigation links.
-  const indicator = document.createElement('li');
-  indicator.className = 'nav-indicator';
-  indicator.setAttribute('aria-hidden', 'true');
-  nav.append(indicator);
-  function placeIndicator(link = activeLink, immediate = false) {
-    if (!link || matchMedia('(max-width: 768px)').matches) return;
-    const parent = nav.getBoundingClientRect();
-    const rect = link.getBoundingClientRect();
-    const values = { x: rect.left - parent.left, scaleX: rect.width, duration: immediate ? 0 : 0.32, ease: 'power3.out', overwrite: true };
-    if (gsap && !reduced.matches) gsap.to(indicator, values);
-    else indicator.style.transform = `translateX(${values.x}px) scaleX(${rect.width})`;
-  }
   function setActive(id) {
     links.forEach(link => {
       const active = link.getAttribute('href') === `#${id}`;
       link.classList.toggle('active', active);
-      if (active) { activeLink = link; link.setAttribute('aria-current', 'location'); }
+      if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
-    placeIndicator();
   }
-  links.forEach(link => {
-    link.addEventListener('mouseenter', () => placeIndicator(link));
-    link.addEventListener('focus', () => placeIndicator(link));
-    link.addEventListener('mouseleave', () => placeIndicator());
-    link.addEventListener('blur', () => placeIndicator());
-  });
 
   // Active state also works when animation dependencies are unavailable.
   const sectionObserver = new IntersectionObserver(entries => {
@@ -206,7 +185,7 @@
     document.body.classList.remove('project-detail-open');
     if (gsap) {
       gsap.set('main, .site-header', { clearProps: 'transform,opacity' });
-      gsap.set('.detail-copy > *, .detail-header', { clearProps: 'transform,opacity,clipPath' });
+      gsap.set('.detail-copy > *, .detail-header > *', { clearProps: 'transform,opacity,clipPath' });
       gsap.set(dialog, { clearProps: 'opacity' });
     }
     selectedProject?.querySelector('.project-open').focus({ preventScroll: true });
@@ -225,7 +204,7 @@
     if (immediate || !canAnimateDetail()) { finishDetailClose(); return; }
     gsap.set(detailArt.firstElementChild, { visibility: 'visible' });
     detailTransition = gsap.timeline({ onComplete: finishDetailClose });
-    detailTransition.to('.detail-copy > *, .detail-header', { y: 12, opacity: 0, duration: 0.22, stagger: 0.02 }, 0)
+    detailTransition.to('.detail-copy > *, .detail-header > *', { y: 12, opacity: 0, duration: 0.22, stagger: 0.02 }, 0)
       .to('main, .site-header', { scale: 1, opacity: 1, duration: 0.55, ease: 'power3.out' }, 0.12);
     const target = $('.project-visual', selectedProject);
     // Reverse the same visual into the grid while the page stays at its scroll position.
@@ -249,14 +228,8 @@
     if (dialog.open) return;
     selectedProject = project;
     $('#detail-title').textContent = project.dataset.projectName;
-    const description = $('.project-description', project).textContent.replace(/\s+/g, ' ').trim();
-    const contribution = $('.project-contribution', project)?.textContent.replace(/\s+/g, ' ').trim();
-    $('#detail-description').textContent = contribution ? description.replace(contribution, '').trim() : description;
-    const contributionField = $('.detail-contribution', dialog);
-    contributionField.hidden = !contribution;
-    contributionField.lastElementChild.textContent = contribution || '';
+    $('#detail-description').replaceChildren(...Array.from($('.project-data', project).children, child => child.cloneNode(true)));
     $('.detail-category').textContent = $('.project-category', project).textContent.trim();
-    $('.detail-technologies > div').textContent = $('.project-technologies', project).textContent.replace(/\s+/g, ' ').trim();
     $('.detail-repository').href = project.dataset.repo;
     const visual = $('.project-visual', project).cloneNode(true);
     visual.removeAttribute('style');
@@ -274,7 +247,7 @@
     detailMotion.timeScale(0.8);
     detailTransition = gsap.timeline();
     detailTransition.to('main, .site-header', { scale: 0.975, opacity: 0.35, duration: 0.65, ease: 'power3.out' }, 0)
-      .fromTo('.detail-header', { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.25)
+      .fromTo('.detail-header > *', { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45 }, 0.25)
       .fromTo('.detail-copy > *', { y: 35, opacity: 0, clipPath: 'inset(0% 0% 100% 0%)' }, { y: 0, opacity: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: 0.65, stagger: 0.08, ease: 'power3.out' }, 0.4);
     detailTransition.add(sharedArtwork($('.project-visual', project), visual, () => detailMotion?.play()), 0);
   }
@@ -396,7 +369,7 @@
     finishOpening();
     $('.music-art').disabled = true;
     pointerCleanup();
-    root.classList.remove('motion-active', 'cursor-enabled');
+    root.classList.remove('motion-active');
     $$('.reveal').forEach(element => element.classList.add('show'));
   }
   if (!gsap || !ScrollTrigger) { staticMode(); return; }
@@ -449,9 +422,7 @@
     while (visual.firstChild) depth.append(visual.firstChild);
     visual.append(depth);
     project.dataset.motionProject = project.dataset.kind;
-    project.dataset.cursor = 'VIEW PROJECT';
   });
-  $$('.hero-scroll, .copy-email').forEach(element => element.dataset.magnetic = 'true');
   const emailButton = $('.copy-email');
   const emailText = [...emailButton.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
   if (emailText) {
@@ -461,23 +432,17 @@
     label.append(emailText);
   }
 
-  // A single event-driven animation frame handles cursor + local artwork depth.
+  // Pointer motion adds depth to the portrait and project artwork.
   function setupPointer() {
-    const dot = $('.cursor-dot');
-    const ring = $('.cursor-ring');
-    const label = $('.cursor-label');
     const portrait = $('.hero-portrait');
-    let x = 0, y = 0, rx = 0, ry = 0, frame = 0;
-    let target = null, bounds = null, heroBounds = null, magnet = null, magnetBounds = null;
+    let x = 0, y = 0, frame = 0;
+    let target = null, bounds = null, heroBounds = null;
     let visible = false;
     const cleanups = [];
     const listen = (element, event, fn) => { element.addEventListener(event, fn); cleanups.push(() => element.removeEventListener(event, fn)); };
     const update = () => {
       frame = 0;
       if (!visible) return;
-      rx += (x - rx) * 0.2; ry += (y - ry) * 0.2;
-      gsap.set(dot, { x, y });
-      gsap.set(ring, { x: rx, y: ry });
       if (openingFinished && heroBounds) {
         const nx = (x - heroBounds.left) / heroBounds.width - 0.5;
         const ny = (y - heroBounds.top) / heroBounds.height - 0.5;
@@ -495,18 +460,11 @@
         $('.project-visual', target).style.setProperty('--pointer-y', `${(ny + 0.5) * 100}%`);
         $('.project-visual', target).style.setProperty('--local-x', `${nx * 18}px`);
         $('.project-visual', target).style.setProperty('--local-y', `${ny * 12}px`);
-        target.style.setProperty('--title-shift', `${nx * 7}px`);
       }
-      if (magnet && magnetBounds) {
-        const mx = x - magnetBounds.left - magnetBounds.width / 2;
-        const my = y - magnetBounds.top - magnetBounds.height / 2;
-        gsap.set(magnet, { x: Math.max(-8, Math.min(8, mx * 0.12)), y: Math.max(-6, Math.min(6, my * 0.16)) });
-      }
-      if (Math.abs(rx - x) + Math.abs(ry - y) > 0.1) frame = requestAnimationFrame(update);
     };
     const move = event => {
       x = event.clientX; y = event.clientY;
-      if (!visible) { visible = true; rx = x; ry = y; root.classList.add('cursor-enabled'); }
+      visible = true;
       if (!frame) frame = requestAnimationFrame(update);
     };
     const resetHero = () => {
@@ -521,19 +479,11 @@
     listen(window, 'scroll', () => {
       if (heroBounds) heroBounds = hero.getBoundingClientRect();
       if (target) bounds = $('.project-visual', target).getBoundingClientRect();
-      if (magnet) magnetBounds = magnet.getBoundingClientRect();
     });
-    const hide = () => { visible = false; root.classList.remove('cursor-enabled'); resetHero(); if (frame) cancelAnimationFrame(frame); frame = 0; };
+    const hide = () => { visible = false; resetHero(); if (frame) cancelAnimationFrame(frame); frame = 0; };
     listen(document, 'pointerleave', hide);
     listen(window, 'blur', hide);
     listen(document, 'visibilitychange', () => { if (document.hidden) hide(); });
-    $$('[data-cursor], a, button').forEach(element => {
-      listen(element, 'pointerenter', () => {
-        label.textContent = element.dataset.cursor || (element.tagName === 'A' ? 'OPEN' : '');
-        ring.classList.add('active');
-      });
-      listen(element, 'pointerleave', () => { ring.classList.remove('active'); label.textContent = ''; });
-    });
     projects.filter(project => project.dataset.motionProject !== 'archive').forEach(project => {
       const visual = $('.project-visual', project);
       listen(project, 'pointerenter', event => {
@@ -543,28 +493,22 @@
         gsap.killTweensOf($('.art-depth', project));
       });
       listen(project, 'pointerleave', () => {
-        target = null; bounds = null; project.style.setProperty('--title-shift', '0px');
+        target = null; bounds = null;
         visual.style.setProperty('--local-x', '0px');
         visual.style.setProperty('--local-y', '0px');
         gsap.to($('.art-depth', project), { x: 0, y: 0, rotationX: 0, rotationY: 0, duration: 0.65, ease: 'power3.out', overwrite: true });
       });
     });
-    $$('[data-magnetic]').forEach(element => {
-      listen(element, 'pointerenter', () => { magnet = element; magnetBounds = element.getBoundingClientRect(); gsap.killTweensOf(element); });
-      listen(element, 'pointerleave', () => { magnet = null; magnetBounds = null; gsap.to(element, { x: 0, y: 0, duration: 0.45, ease: 'power3.out', overwrite: true }); });
-    });
     return () => {
       hide(); cleanups.forEach(cleanup => cleanup());
-      $$('[data-magnetic], .art-depth, .hero-title-wrap, .hero-accent').forEach(element => {
+      $$('.art-depth, .hero-title-wrap, .hero-accent').forEach(element => {
         gsap.killTweensOf(element);
         gsap.set(element, { clearProps: 'transform' });
       });
       projects.forEach(project => {
-        project.style.removeProperty('--title-shift');
         const visual = $('.project-visual', project);
         ['--local-x', '--local-y', '--pointer-x', '--pointer-y'].forEach(property => visual.style.removeProperty(property));
       });
-      ring.classList.remove('active');
     };
   }
 
@@ -808,7 +752,6 @@
           .fromTo(links, { yPercent: 110, clipPath: 'inset(0% 0% 100% 0%)' }, { yPercent: 0, clipPath: 'inset(0% 0% 0% 0%)', duration: 0.45, stagger: 0.065, ease }, 0.2);
       }
       if (pointer) pointerCleanup = setupPointer();
-      placeIndicator(activeLink, true);
       // Refresh in document order so every later section accounts for pin spacing.
       ScrollTrigger.sort();
       ScrollTrigger.refresh();
@@ -819,7 +762,7 @@
         links.forEach(link => link.removeEventListener('click', skipOpening));
         pointerCleanup(); pointerCleanup = () => {};
         menuTimeline = null;
-        root.classList.remove('motion-active', 'cursor-enabled');
+        root.classList.remove('motion-active');
         menuState(false);
       };
     });
@@ -830,7 +773,7 @@
       const destination = document.getElementById(decodeURIComponent(location.hash.slice(1)));
       destination?.scrollIntoView({ behavior: 'instant', block: 'start' });
     };
-    document.fonts?.ready.then(() => { ScrollTrigger.refresh(); placeIndicator(activeLink, true); followInitialAnchor(); });
+    document.fonts?.ready.then(() => { ScrollTrigger.refresh(); followInitialAnchor(); });
     window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
     let resizeTimer;
     window.addEventListener('resize', () => {
@@ -838,7 +781,6 @@
       resizeTimer = setTimeout(() => {
         menuState(false);
         nav.inert = matchMedia('(max-width: 768px)').matches;
-        placeIndicator(activeLink, true);
       }, 160);
     });
     window.addEventListener('pagehide', () => { opening?.progress(1); });
