@@ -4,6 +4,7 @@
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const header = $('.site-header');
   const nav = $('.nav-links');
   const toggle = $('.nav-toggle');
   const links = $$('.nav-link');
@@ -18,6 +19,11 @@
   let media;
   let toastTimer;
   let pointerCleanup = () => {};
+
+  // Keep navigation legible over every section without changing the first frame.
+  const updateHeaderBackground = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
+  updateHeaderBackground();
+  window.addEventListener('scroll', updateHeaderBackground, { passive: true });
 
   function finishOpening() {
     openingFinished = true;
